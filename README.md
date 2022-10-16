@@ -11,7 +11,7 @@ check this page: https://angular.io/guide/setup-local
 
 # How to run
 
-- Clone the dir (make sure you're on the right branch.. lol)
+- Clone the dir (make sure you're on the right branch.. gues its `master` lol)
 - In a terminal at the root of this project, run `npm install`
 - In a terminal at the root of this project, run `ng serve` to start the dev server or `ng serve --open` to also open a browser window to the project.
 
