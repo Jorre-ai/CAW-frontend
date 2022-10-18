@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from './_components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { RequestFormComponent } from './components/request-form/request-form.component';
+import { StockFormComponent } from './components/stock-form/stock-form.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AppComponent,
     AlertComponent,
     HomeComponent,
+    RequestFormComponent,
+    StockFormComponent,
   ],
   imports: [
     BrowserModule,
