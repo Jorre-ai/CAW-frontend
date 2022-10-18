@@ -1,49 +1,81 @@
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
-</nav>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>CAW-antwerp big LOGO placeholder</p>
 
-<div class="header">
+<ul class="list-group">
+  <li class="list-group-item list-group-item-action">
+    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+  </li>
+  <li class="list-group-item list-group-item-action">
+    <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+  </li>
+  <li class="list-group-item list-group-item-action">
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+  </li>
+  <li class="list-group-item list-group-item-action">request forms</li>
+  <li class="list-group-item list-group-item-action">Overview</li>
 
-  <!--Content before waves-->
-  <div class="inner-header">
-  <!-- main app container -->
-  <div class="app-container" [ngClass]="{ 'bg-light': user }">
-    <alert></alert>
-    <router-outlet></router-outlet>
-  </div>
+</ul>
 
-  </div>
-  
-  <!--Waves Container-->
-  <div>
-    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-    <defs>
-    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-    </defs>
-    <g class="parallax">
-    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-    </g>
-    </svg>
-  </div>
-  <!--Waves end-->
-  
-</div>
-  <!--Header ends-->
-  
-<div class="content flex">
-    <p>footnote (rechten aan ... )</p>
+
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      CAW-antwerp small logo placeholder
+    </button>
 
     
-    <p>
-      <a href="#" target="_blank">nog een coole footer link ofzo</a>
-  </p>
-</div>
+
+    <div class="header">
+
+      <!--Content before waves-->
+      <div class="inner-header">
+      <!-- main app container -->
+      <div class="app-container" [ngClass]="{ 'bg-light': user }">
+        <alert></alert>
+        <router-outlet></router-outlet>
+      </div>
+    
+      </div>
+      
+      <!--Waves Container-->
+      <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+        </svg>
+      </div>
+      <!--Waves end-->
+      
+    </div>
+      <!--Header ends-->
+      
+    <div class="content flex">
+        <p>footnote (rechten aan ... )</p>
+    
+        
+        <p>
+          <a href="#" target="_blank">nog een coole footer link ofzo</a>
+      </p>
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+</mat-drawer-container>
+

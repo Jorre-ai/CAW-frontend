@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from './_components';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import { AlertComponent } from './_components';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+
+    MatSidenavModule,
 
   ],
   providers: [

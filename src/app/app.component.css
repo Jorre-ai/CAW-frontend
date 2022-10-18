@@ -35,7 +35,7 @@ p {
 }
 
 .inner-header {
-  height:58vh;
+  height:70vh;
   width:100%;
   margin: 0;
   padding: 100px 0 0 0;
@@ -59,7 +59,7 @@ p {
 
 .content {
   position:relative;
-  height:20vh;
+  height:10vh;
   text-align:center;
   background-color: white;
 }
@@ -100,7 +100,7 @@ p {
     min-height:40px;
   }
   .content {
-    height:30vh;
+    height:0vh;
   }
   h1 {
     font-size:24px;
