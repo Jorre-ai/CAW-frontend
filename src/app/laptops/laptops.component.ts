@@ -12,8 +12,6 @@ import { map } from 'rxjs/operators';
 })
 export class LaptopsComponent implements OnInit {
   laptopUrl = 'http://localhost:8000/laptop';
-  laptop: any;
-  laptops: {};
   allLaptops: any[] = null;
 
   constructor(
@@ -21,10 +19,9 @@ export class LaptopsComponent implements OnInit {
     ) { }
 
 
-   getAllLaptops() {
+  getAllLaptops() {
     return this.http.get<Laptop[]>(this.laptopUrl)
   }
-
 
     ngOnInit(): void {
       this.getAllLaptops().pipe(first()).subscribe(laptops => this.allLaptops = laptops)
