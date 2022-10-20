@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './_helpers/auth.guard';
-import { LaptopsComponent } from './laptops/laptops.component';
-
 
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
+const laptopsModule = () => import('./laptops/laptops.module').then(x => x.LaptopsModule)
 
 const routes: Routes = [
 
@@ -15,7 +14,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
   { path: 'account', loadChildren: accountModule },
-  { path: 'laptops', component: LaptopsComponent},
+  { path: 'laptops', loadChildren: laptopsModule},
 
 
 

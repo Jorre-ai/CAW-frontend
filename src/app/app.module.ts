@@ -10,8 +10,10 @@ import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from './_components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { LaptopsComponent } from './laptops/laptops.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
+
 
 
 @NgModule({
@@ -19,7 +21,6 @@ import { LaptopsComponent } from './laptops/laptops.component';
     AppComponent,
     AlertComponent,
     HomeComponent,
-    LaptopsComponent,
   ],
   imports: [
     BrowserModule,
