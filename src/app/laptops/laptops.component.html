@@ -1,3 +1,25 @@
 <p>laptops works!</p>
-<button (click)="showAllLaptops()">Get all laptops</button>
-<!--(click)="showAllLaptops()"-->
+<a routerLink="add" class="btn btn-sm btn-success">Add Laptop</a>
+<thead>
+    <tr>
+        <th style="width: 40%">Naam</th>
+        <th style="width: 30%">ID</th>
+        <th style="width: 10%">Status</th>
+        <th style="width: 10%">Edit</th>
+        <th style="width: 10%">Delete</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let laptop of allLaptops">
+        <td>{{laptop.name}}</td>
+        <td>{{laptop.id}}</td>
+        <td>{{laptop.status}}</td>
+        <td>
+            <a routerLink="edit/{{laptop.id}}" class="btn btn-sm btn-success">Edit</a>
+        </td>
+        <td>
+            <button>Delete
+            </button>
+        </td>
+    </tr>
+</tbody>
