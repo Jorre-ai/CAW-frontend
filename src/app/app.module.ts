@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from './_components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { LaptopsComponent } from './laptops/laptops.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AppComponent,
     AlertComponent,
     HomeComponent,
+    LaptopsComponent,
   ],
   imports: [
     BrowserModule,
