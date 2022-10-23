@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { RequestFormComponent } from './components/request-form/request-form.component';
 import { StockFormComponent } from './components/stock-form/stock-form.component';
+import { LaptopComponent } from './components/laptop/laptop.component';
 
 
 
@@ -25,6 +26,7 @@ import { StockFormComponent } from './components/stock-form/stock-form.component
     HomeComponent,
     RequestFormComponent,
     StockFormComponent,
+    LaptopComponent,
   ],
   imports: [
     BrowserModule,

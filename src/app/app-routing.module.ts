@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { LaptopComponent } from './components/laptop/laptop.component';
 import { AuthGuard } from './_helpers/auth.guard';
 
 
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
   { path: 'account', loadChildren: accountModule },
-  { path: 'laptops', loadChildren: laptopsModule},
+  { path: 'laptops', component: LaptopComponent},
 
 
 
