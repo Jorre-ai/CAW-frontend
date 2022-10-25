@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helpers';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,9 +11,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from './_components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { RequestFormComponent } from './components/request-form/request-form.component';
 import { StockFormComponent } from './components/stock-form/stock-form.component';
 import { LaptopComponent } from './components/laptop/laptop.component';
+import { SuccesComponent } from './components/request-form/succes/succes.component';
 
 
 
@@ -27,6 +32,7 @@ import { LaptopComponent } from './components/laptop/laptop.component';
     RequestFormComponent,
     StockFormComponent,
     LaptopComponent,
+    SuccesComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +41,13 @@ import { LaptopComponent } from './components/laptop/laptop.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FormsModule,
 
     MatSidenavModule,
+    MatListModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatButtonToggleModule,
 
   ],
   providers: [

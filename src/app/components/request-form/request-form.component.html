@@ -1,1 +1,38 @@
-<p>request-form works!</p>
+<h1>request a laptop</h1>
+<div class="container">
+    <form [formGroup]="requestLaptopForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="Full Name">Full Name</label>
+            <input type="test" class="form-control" placeholder="first Lastname" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
+        </div>
+        <div>
+            <label for="type_os">laptop type</label>
+            <select formControlName="type_os" class="form-control">
+                <option>Linux</option>
+                <option>Windows</option>
+              </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Number of laptops</label>
+            <select class="form-control" formControlName="count">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" formControlName="description" placeholder="Extra info" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

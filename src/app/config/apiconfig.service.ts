@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { LaptopRequest } from '../_models/laptoprequest';
+import { LaptopRequest, LaptopRequestRequest } from '../_models/laptoprequest';
 import { Laptop } from '../_models/laptop';
 
 @Injectable({
@@ -23,17 +23,17 @@ export class ApiconfigService {
   // LAPTOP REQUESTS
   getLaptopRequests(){
     return this.http
-    .get<LaptopRequest[]>(this.baseUrl + "/laptoprequest")
+    .get<LaptopRequest[]>(this.baseUrl + "/laptoprequest", this.httpOptions)
   }
 
-  postLaptopRequest(laptopRequest: LaptopRequest){
+  postLaptopRequest(laptopRequest: LaptopRequestRequest){
     return this.http
-    .post(this.baseUrl + "/laptoprequest" , JSON.stringify(laptopRequest))
+    .post(this.baseUrl + "/laptoprequest" , JSON.stringify(laptopRequest), this.httpOptions)
   }
 
   editLaptopRequest(laptopRequest: LaptopRequest){
     return this.http
-    .patch(this.baseUrl + "/laptoprequest", JSON.stringify(laptopRequest))
+    .patch(this.baseUrl + "/laptoprequest", JSON.stringify(laptopRequest), this.httpOptions)
   }
 
 
@@ -44,15 +44,15 @@ export class ApiconfigService {
     .get(this.baseUrl + "/laptop")
   }
 
-  postLaptop(laptop: Laptop): Observable<Laptop>{
+  postLaptop(laptop: any): Observable<any>{
     console.log(JSON.stringify(laptop));
     return this.http
     .post<Laptop>(this.baseUrl + "/laptop", JSON.stringify(laptop), this.httpOptions)
   }
 
-  editLaptop(laptop: Laptop){
+  editLaptop(laptop: any){
     return this.http
-    .patch(this.baseUrl + "/laptop", JSON.stringify(laptop))
+    .patch(this.baseUrl + "/laptop", JSON.stringify(laptop), this.httpOptions)
   }
 
   // USERS
