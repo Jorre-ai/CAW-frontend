@@ -41,7 +41,7 @@ export class ApiconfigService {
   getLaptops(){
     console.log(this.baseUrl + "/laptop")
     return this.http
-    .get(this.baseUrl + "/laptop")
+    .get<Laptop[]>(this.baseUrl + "/laptop")
   }
 
   postLaptop(laptop: any): Observable<any>{

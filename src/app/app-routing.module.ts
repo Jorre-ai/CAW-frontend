@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'laptops', component: LaptopComponent},
   { path: 'stock', component: StockFormComponent},
   { path: 'request/succes', component:SuccesComponent},
+  { path: 'backuplaptop', loadChildren: laptopsModule},
 
 
 

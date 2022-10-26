@@ -18,8 +18,9 @@
 
 
 
-    <button (click)="onAddLaptop()" mat-button>Add laptop</button>
-    <button mat-button>Manage stock</button>
+    <button class="btn btn-outline-secondary" (click)="onAddLaptop()" mat-button>Add laptop</button>
+    <a class="btn btn-outline-secondary"  routerLink="/laptops" routerLinkActive="active" mat-button>Manage stock</a>
+
   </mat-card-actions>
 </mat-card>
 

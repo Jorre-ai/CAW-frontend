@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
 import { Laptop } from 'src/app/_models/laptop';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-laptop',
@@ -8,9 +9,13 @@ import { Laptop } from 'src/app/_models/laptop';
   styleUrls: ['./laptop.component.css']
 })
 export class LaptopComponent implements OnInit {
+  allLaptops : Laptop[] = null;
+
   constructor(public restApi: ApiconfigService) {}
 
   ngOnInit(): void {
+    this.restApi.getLaptops().pipe(first()).subscribe(laptops => this.allLaptops = laptops)
+
   }
 
   onGetLaptop() {
