@@ -3,7 +3,7 @@
 
 
 <div class="container">
-    <div class="m-5">
+    <div class="">
         <mat-card >
             <mat-card-title>Laptop ingave</mat-card-title>
             <mat-card-subtitle>{{availableLaptopCount}} Laptops in stock</mat-card-subtitle>
@@ -32,7 +32,7 @@
     <!--
         List with all unapproved requests
     -->
-    <div class="m-5">
+    <div class="">
         <h1>Pending requests</h1>
 
         <mat-accordion class="requestList">
@@ -71,7 +71,7 @@
     </div>
     
     
-    <div class="m-5">
+    <div class="">
         <h1 *ngIf="laptopRequests.length > 0">Approved requests</h1>
 
         <mat-accordion class="requestList">

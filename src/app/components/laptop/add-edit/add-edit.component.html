@@ -1,27 +1,53 @@
-<h1 *ngIf="isAddMode">Add Laptop</h1>
-<h1 *ngIf="!isAddMode">Edit Laptop</h1>
-<div *ngFor="let laptop of allLaptops" >
-    <div *ngIf="laptop.id.toString() == this.id">
-        <!-- Everything Laptop Specific in this part -->
-        <h3>{{laptop.name}}</h3>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="name">Name</label>
-                    <input type="text" formControlName="name" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Save
-                </button>
-                <a routerLink="/laptops" class="btn btn-link">Cancel</a>
-            </div>
-        </form>
-
+<div class="container card p-3">
+    <h1 *ngIf="isAddMode">Add Laptop</h1>
+    <h1 *ngIf="!isAddMode">Edit Laptop</h1>
+    <div *ngFor="let laptop of allLaptops" >
+        <div *ngIf="laptop.id.toString() == this.id">
+            <!-- Everything Laptop Specific in this part -->
+            <h3></h3>
+        </div>
     </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row m-3">
+            <div class="form-group">
+                <label for="name" >Name</label>
+                <input id="name" type="text"  formControlName="name" class="form-control">
+            </div>
+        </div>
+        <div class="m-3 col">
+            <div class="row">
+                <span class="col-4"></span>
+                <span class="col-2">
+                    <input type="radio" id="Windows" class="btn-check" formControlName="type" value="Windows" style="display: none">
+                    <label for="Windows" class="btn btn-outline-secondary">Windows</label>
+                </span>
+                <span class="col-2">
+                    <input type="radio" id="Linux" class="btn-check" formControlName="type"  value="Linux" style="display: none">
+                    <label for="Linux" class="btn btn-outline-secondary">Linux</label>
+                </span>
+
+
+                
+
+            </div>
+        </div>
+        
+    
+        <div class="form-group m-3">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Save
+            </button>
+            <a routerLink="/laptops" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+
+
+
+
+
+
+
+
 </div>
-
-
 

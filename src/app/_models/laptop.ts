@@ -4,4 +4,5 @@ export class Laptop {
     type: string;
     price: string;
     user_ID: Number;
+    status: string;
 }

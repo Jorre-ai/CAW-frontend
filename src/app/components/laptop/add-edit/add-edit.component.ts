@@ -19,6 +19,7 @@ export class AddEditComponent implements OnInit {
   submitted = false;
   allLaptops : Laptop[] = null;
   currentLaptop: Laptop = null;
+  
 
 
   constructor(
@@ -43,10 +44,6 @@ export class AddEditComponent implements OnInit {
       this.restApi.getLaptops().pipe(first()).subscribe(laptops => this.allLaptops = laptops)
 
     }
-
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required]
-    })
   }
 
   get f() { return this.form.controls;}
@@ -57,7 +54,28 @@ export class AddEditComponent implements OnInit {
     this.alertService.clear();
 
     if (this.form.invalid){
+      console.log("unvalid form")
       return;
     }
+
+    // Store laptop in database
+    this.currentLaptop = this.form.value;
+    this.currentLaptop.price = "30";
+    if (this.currentLaptop.type == "Windows"){
+      this.currentLaptop.price = "50";
+    }
+    this.currentLaptop.user_ID = 1;
+    this.currentLaptop.status = "available";
+    //this.currentLaptop.requestID = null;
+    //this.isPaid = False;
+    //this.isFree = False;
+
+    this.restApi.postLaptop(this.currentLaptop).subscribe(response => {
+      console.log(response);
+    })
+
+    this.router.navigate(['/laptops'], { relativeTo: this.route })
   }
+
+  
 }

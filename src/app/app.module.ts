@@ -22,6 +22,7 @@ import { SuccesComponent } from './components/request-form/succes/succes.compone
 import { AddEditComponent } from './components/laptop/add-edit/add-edit.component';
 import { RequestComponent } from './components/request/request.component';
 import { DetailComponent } from './components/request/detail/detail.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -54,6 +55,7 @@ import { DetailComponent } from './components/request/detail/detail.component';
     MatExpansionModule,
     MatCardModule,
     MatButtonToggleModule,
+    FontAwesomeModule,
 
   ],
   providers: [
