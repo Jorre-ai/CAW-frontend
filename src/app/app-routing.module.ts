@@ -7,7 +7,8 @@ import { RequestFormComponent } from './components/request-form/request-form.com
 import { SuccesComponent } from './components/request-form/succes/succes.component';
 import { StockFormComponent } from './components/stock-form/stock-form.component';
 import { AuthGuard } from './_helpers/auth.guard';
-
+import { RequestComponent } from './components/request/request.component';
+import { DetailComponent } from './components/request/detail/detail.component'
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -24,9 +25,15 @@ const routes: Routes = [
   { path: 'request/succes', component:SuccesComponent},
   { path: 'backuplaptop', loadChildren: laptopsModule},
 
+  // laptop routing
+
   { path: 'laptops', component: LaptopComponent},
   { path: 'laptops/add', component: AddEditComponent},
   { path: 'laptops/edit/:id', component: AddEditComponent},
+
+  // request routing
+  { path: 'requests', component: RequestComponent},
+  { path: 'requests/detail/:id', component: DetailComponent},
 
 
 

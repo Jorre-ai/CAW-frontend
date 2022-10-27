@@ -1,0 +1,8 @@
+<div *ngFor="let laptopRequest of allRequests" >
+    <div *ngIf="laptopRequest.id.toString() == this.id">
+        <!-- Everything Laptop Specific in this part -->
+
+        <p>{{laptopRequest.name}}</p>
+
+    </div>
+</div>

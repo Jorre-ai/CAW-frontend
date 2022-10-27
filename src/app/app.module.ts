@@ -20,6 +20,8 @@ import { StockFormComponent } from './components/stock-form/stock-form.component
 import { LaptopComponent } from './components/laptop/laptop.component';
 import { SuccesComponent } from './components/request-form/succes/succes.component';
 import { AddEditComponent } from './components/laptop/add-edit/add-edit.component';
+import { RequestComponent } from './components/request/request.component';
+import { DetailComponent } from './components/request/detail/detail.component';
 
 
 
@@ -35,6 +37,8 @@ import { AddEditComponent } from './components/laptop/add-edit/add-edit.componen
     LaptopComponent,
     SuccesComponent,
     AddEditComponent,
+    RequestComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -44,7 +44,20 @@ export class AddEditComponent implements OnInit {
 
     }
 
-
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required]
+    })
   }
 
+  get f() { return this.form.controls;}
+
+  onSubmit(){
+    this.submitted = true;
+
+    this.alertService.clear();
+
+    if (this.form.invalid){
+      return;
+    }
+  }
 }
