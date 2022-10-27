@@ -15,6 +15,7 @@ export class LaptopComponent implements OnInit {
 
   ngOnInit(): void {
     this.restApi.getLaptops().pipe(first()).subscribe(laptops => this.allLaptops = laptops)
+    
 
   }
 

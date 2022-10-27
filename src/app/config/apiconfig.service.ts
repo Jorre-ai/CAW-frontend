@@ -4,13 +4,16 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { LaptopRequest, LaptopRequestRequest } from '../_models/laptoprequest';
 import { Laptop } from '../_models/laptop';
+import { first } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiconfigService {
+  private baseUrl: string = "http://localhost:8000";
+  allLaptops : Laptop[] = null;
 
-  private baseUrl: string = "http://localhost:8000"
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +28,8 @@ export class ApiconfigService {
     return this.http
     .get<LaptopRequest[]>(this.baseUrl + "/laptoprequest", this.httpOptions)
   }
+
+
 
   postLaptopRequest(laptopRequest: LaptopRequestRequest){
     return this.http
@@ -43,6 +48,7 @@ export class ApiconfigService {
     return this.http
     .get<Laptop[]>(this.baseUrl + "/laptop")
   }
+
 
   postLaptop(laptop: any): Observable<any>{
     console.log(JSON.stringify(laptop));

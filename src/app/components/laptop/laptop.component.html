@@ -9,7 +9,7 @@
 
 <div class="container">
     <div class="jumbotron bg-light p-1">
-        <a routerLink="add" class="btn btn-outline-secondary">Add Laptop</a>
+        <a routerLink="/laptops/add" class="btn btn-outline-secondary">Add Laptop</a>
     
         <table class="table table-striped  text-dark">
             <thead>
@@ -31,7 +31,7 @@
                         <td>{{laptop.price}} euro</td>
     
                         <td>
-                            <a routerLink="edit/{{laptop.id}}" class="btn btn-outline-secondary">Edit</a>
+                            <a routerLink="/laptops/edit/{{laptop.id}}" class="btn btn-outline-secondary">Edit</a>
                         </td>
                         <td>
                             <button class="btn btn-outline-secondary">Delete

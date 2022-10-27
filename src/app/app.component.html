@@ -1,6 +1,8 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>CAW-antwerp big LOGO placeholder</p>
+    <!--    <p>CAW-antwerp big LOGO placeholder</p>
+-->
+    <img class="m-2" src="../assets/logos/caw-blauwfuchsia-rgb@2x.png" alt="" height="50px">
 
 <ul class="list-group">
   <li class="list-group-item list-group-item-action">
@@ -12,6 +14,11 @@
   <li class="list-group-item list-group-item-action">
     <a class="nav-item nav-link" routerLink="/laptops" routerLinkActive="active">Laptops</a>
   </li>
+
+
+
+
+  <!--
   <li class="list-group-item list-group-item-action">
     <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
   </li>
@@ -20,15 +27,18 @@
   </li>
   <li class="list-group-item list-group-item-action">request forms</li>
   <li class="list-group-item list-group-item-action">Overview</li>
-
+  -->
 </ul>
 
 
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      CAW-antwerp small logo placeholder
+    <button type="button" class="p-2" style="border: none; background-color: white" mat-button (click)="drawer.toggle()">
+      <!--CAW-antwerp small logo placeholder-->
+      <img src="../assets/logos/caw-blauwfuchsia-rgb@2x.png" alt="" height="50px">
+
+
     </button>
 
     

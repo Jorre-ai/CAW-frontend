@@ -1,1 +1,13 @@
-<p>add-edit works!</p>
+<h1 *ngIf="isAddMode">Add Laptop</h1>
+<h1 *ngIf="!isAddMode">Edit Laptop</h1>
+<div *ngFor="let laptop of allLaptops" >
+    <div *ngIf="laptop.id.toString() == this.id">
+        <!-- Everything Laptop Specific in this part -->
+
+        <p>{{laptop.name}}</p>
+
+    </div>
+</div>
+
+
+

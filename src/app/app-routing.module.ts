@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LaptopComponent } from './components/laptop/laptop.component';
+import { AddEditComponent } from './components/laptop/add-edit/add-edit.component';
 import { RequestFormComponent } from './components/request-form/request-form.component';
 import { SuccesComponent } from './components/request-form/succes/succes.component';
 import { StockFormComponent } from './components/stock-form/stock-form.component';
@@ -18,10 +19,14 @@ const routes: Routes = [
   { path: '', component: RequestFormComponent},
   { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
   { path: 'account', loadChildren: accountModule },
-  { path: 'laptops', component: LaptopComponent},
+
   { path: 'stock', component: StockFormComponent},
   { path: 'request/succes', component:SuccesComponent},
   { path: 'backuplaptop', loadChildren: laptopsModule},
+
+  { path: 'laptops', component: LaptopComponent},
+  { path: 'laptops/add', component: AddEditComponent},
+  { path: 'laptops/edit/:id', component: AddEditComponent},
 
 
 
