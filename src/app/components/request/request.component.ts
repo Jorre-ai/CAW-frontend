@@ -1,8 +1,9 @@
 import { Component, OnInit, Pipe } from '@angular/core';
-import { first } from 'rxjs';
+import { first, pipe } from 'rxjs';
 import { filter } from 'rxjs';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
 import { LaptopRequest } from 'src/app/_models/laptoprequest';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-request',
@@ -10,16 +11,30 @@ import { LaptopRequest } from 'src/app/_models/laptoprequest';
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit{
-  allRequests: LaptopRequest[] = null;
+  allRequests: LaptopRequest[] = [];
+  pendingRequests: LaptopRequest[] = [];
+  approvedRequests: LaptopRequest[] = [];
+
 
   constructor(public restApi: ApiconfigService) { 
-    this.restApi.getLaptopRequests().subscribe(requests => this.allRequests = requests)
-
-
+    this.restApi.getLaptopRequests().
+    pipe(map(requests => {
+      for(let request of requests){
+        if (request.status == "pending"){
+          this.pendingRequests.push(request)
+        }
+        if (request.status == "approved"){
+          this.approvedRequests.push(request)
+        }
+      }
+      return requests}
+      ))
+    .subscribe()
   }
 
   ngOnInit(): void {
-    console.log("alle requests" , this.allRequests)
+    console.log("alle approved requests" , this.approvedRequests)
+    console.log("alle pending requests", this.pendingRequests)
   }
 }
 

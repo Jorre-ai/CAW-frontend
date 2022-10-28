@@ -4,9 +4,13 @@ body {
   margin:0;
 }
 .nav-button {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: transparent ;
   border: none; 
+  font-size: 32px;
+  color: midnightblue;
 }
 
 

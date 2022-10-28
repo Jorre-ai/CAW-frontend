@@ -31,7 +31,7 @@ export class RequestFormComponent implements OnInit {
     console.log(this.requestLaptopForm.value);
 
     var laptopRequest: LaptopRequestRequest = {
-      name: this.requestLaptopForm.value.name,
+      name: "test" + this.requestLaptopForm.value.name,
       email: this.requestLaptopForm.value.email,
       count: this.requestLaptopForm.value.count,
       type_os: this.requestLaptopForm.value.type_os,

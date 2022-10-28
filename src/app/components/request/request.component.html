@@ -1,28 +1,25 @@
 
 
-<h1>All Requests</h1>
-
-
-
 <div class="container">
+    <h2>Pending Requests</h2>
     <div class="jumbotron bg-light p-1">
         <table class="table table-striped text-dark">
             <thead>
                 <tr>
-                    <th style="width: 40%;">Name</th>
+                    <th style="width: 20%;">Name</th>
+                    <th style="width: 20%;">Description</th>
                     <th style="width: 10%;">Amount</th>
                     <th style="width: 10%;">OS</th>
                     <th style="width: 20%;">Status</th>
                     <th style="width: 10%;">Detail</th>
-
                     <th style="width: 10%;">Delete</th>
                     
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let request of allRequests">
+                <tr *ngFor="let request of pendingRequests">
                     <td>{{request.name}}</td>
-                    
+                    <td>{{request.description}}</td>
                     <td>{{request.count}}</td>
                     <td>{{request.type_os}}</td>
                     <td>{{request.status}}</td>
@@ -37,8 +34,44 @@
             </tbody>
 
         </table>
-
     </div>
+
+    <h2>Approved Requests</h2>
+
+    <div class="jumbotron bg-light p-1">
+        <table class="table table-striped text-dark">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Name</th>
+                    <th style="width: 20%;">Description</th>
+                    <th style="width: 10%;">Amount</th>
+                    <th style="width: 10%;">OS</th>
+                    <th style="width: 20%;">Status</th>
+                    <th style="width: 10%;">Detail</th>
+                    <th style="width: 10%;">Delete</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let request of approvedRequests">
+                    <td>{{request.name}}</td>
+                    <td>{{request.description}}</td>
+                    <td>{{request.count}}</td>
+                    <td>{{request.type_os}}</td>
+                    <td>{{request.status}}</td>
+                    <td>
+                        <a routerLink="/requests/detail/{{request.id}}" class="btn btn-outline-secondary">Details</a>
+                    </td> 
+                    <td>
+                        <button class="btn btn-outline-secondary">Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+    
+        </table>
+    </div>
+
 </div>
 
 

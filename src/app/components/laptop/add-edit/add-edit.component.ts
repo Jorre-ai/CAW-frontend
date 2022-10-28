@@ -36,7 +36,7 @@ export class AddEditComponent implements OnInit {
     this.isAddMode = !this.id;
 
     this.form = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.minLength(6), Validators.required, Validators.pattern("[a-zA-Z0-9 ]*")]],
       type: ['', Validators.required]
     });
 
