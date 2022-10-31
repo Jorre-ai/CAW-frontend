@@ -45,7 +45,7 @@
                             <a routerLink="/laptops/edit/{{laptop.id}}" class="btn btn-outline-secondary">Edit</a>
                         </td>
                         <td>
-                            <button class="btn btn-outline-secondary">Delete
+                            <button (click)="onDeleteLaptop(laptop.id)" class="btn btn-outline-secondary">Delete
                             </button>
                         </td>
                     </tr>
@@ -55,4 +55,3 @@
         </table>
     </div>
 </div>
-

@@ -63,7 +63,7 @@ export class StockFormComponent implements OnInit {
       status: "assigned"
     }
 
-    this.restApi.editLaptop(laptop).subscribe(laptopresponse => {
+    this.restApi.updateLaptop(laptop).subscribe(laptopresponse => {
       console.log(laptopresponse);
     });
 
@@ -100,10 +100,10 @@ export class StockFormComponent implements OnInit {
 
     console.log(laptop)
 
-    this.restApi.postLaptop(laptop).subscribe(response => {
-      console.log(response);
-      this.ngOnInit();
-    })
+    // this.restApi.postLaptop(laptop).subscribe(response => {
+    //   console.log(response);
+    //   this.ngOnInit();
+    // });
   
   }
 

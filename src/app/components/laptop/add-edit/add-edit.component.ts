@@ -4,23 +4,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/_services';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
 import { first } from 'rxjs';
-import { Laptop } from 'src/app/_models/laptop';
+import { Laptop, LaptopEdit } from 'src/app/_models/laptop';
+import { LaptopCreate } from 'src/app/_models/laptop';
 
 @Component({
   selector: 'app-add-edit',
   templateUrl: './add-edit.component.html',
-  styleUrls: ['./add-edit.component.css']
+  styleUrls: ['./add-edit.component.css'],
 })
 export class AddEditComponent implements OnInit {
   form!: FormGroup;
-  id!: string;
+  id!: number;
   isAddMode!: boolean;
   loading = false;
   submitted = false;
-  allLaptops : Laptop[] = null;
+  allLaptops: Laptop[] = null;
   currentLaptop: Laptop = null;
-  
 
+  createLaptopObject: LaptopCreate;
+  editLaptopObject: LaptopEdit;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,54 +30,78 @@ export class AddEditComponent implements OnInit {
     private router: Router,
     private restApi: ApiconfigService,
     private alertService: AlertService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
 
     this.form = this.formBuilder.group({
-      name: ['', [Validators.minLength(6), Validators.required, Validators.pattern("[a-zA-Z0-9 ]*")]],
-      type: ['', Validators.required]
+      name: [
+        '',
+        [
+          Validators.minLength(6),
+          Validators.required,
+          Validators.pattern('[a-zA-Z0-9 ]*'),
+        ],
+      ],
+      type: ['', Validators.required],
     });
 
     if (!this.isAddMode) {
-      this.restApi.getLaptops().pipe(first()).subscribe(laptops => this.allLaptops = laptops)
-
+      this.restApi
+        .getLaptopById(this.id)
+        .pipe(first())
+        .subscribe((response) => {
+          this.form.patchValue(response);
+        });
     }
   }
 
-  get f() { return this.form.controls;}
+  get f() {
+    return this.form.controls;
+  }
 
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
-
     this.alertService.clear();
 
-    if (this.form.invalid){
-      console.log("unvalid form")
+    if (this.form.invalid) {
+      console.log('unvalid form');
       return;
     }
 
-    // Store laptop in database
-    this.currentLaptop = this.form.value;
-    this.currentLaptop.price = "30";
-    if (this.currentLaptop.type == "Windows"){
-      this.currentLaptop.price = "50";
-    }
-    this.currentLaptop.user_ID = 1;
-    this.currentLaptop.status = "available";
-    //this.currentLaptop.requestID = null;
-    //this.isPaid = False;
-    //this.isFree = False;
-
-    this.restApi.postLaptop(this.currentLaptop).subscribe(response => {
-      console.log(response);
-    })
-
-    this.router.navigate(['/laptops'], { relativeTo: this.route })
+    this.isAddMode == true ? this.createLaptop() : this.editLaptop();
   }
 
-  
+  createLaptop() {
+    this.createLaptopObject = new LaptopCreate();
+    this.createLaptopObject = this.form.value;
+    this.createLaptopObject.type == 'Windows'
+      ? (this.createLaptopObject.price = 50)
+      : (this.createLaptopObject.price = 30);
+    this.createLaptopObject.status = 'available';
+    this.createLaptopObject.isPaid = false;
+    this.createLaptopObject.isFree = false;
+
+    this.restApi.postLaptop(this.createLaptopObject).subscribe((response) => {
+      this.router.navigate(['/laptops'], { relativeTo: this.route });
+    });
+  }
+
+  editLaptop() {
+    this.editLaptopObject = new LaptopEdit();
+    this.editLaptopObject = this.form.value;
+    this.editLaptopObject.id = this.id;
+    this.editLaptopObject.type == 'Windows'
+      ? (this.editLaptopObject.price = 50)
+      : (this.editLaptopObject.price = 30);
+    this.editLaptopObject.status = 'available';
+    this.editLaptopObject.isPaid = false;
+    this.editLaptopObject.isFree = false;
+
+    this.restApi.editLaptop(this.editLaptopObject).subscribe((response) => {
+      this.router.navigate(['/laptops'], { relativeTo: this.route });
+    });
+  }
 }

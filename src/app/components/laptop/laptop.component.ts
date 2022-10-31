@@ -6,21 +6,22 @@ import { first } from 'rxjs';
 @Component({
   selector: 'app-laptop',
   templateUrl: './laptop.component.html',
-  styleUrls: ['./laptop.component.css']
+  styleUrls: ['./laptop.component.css'],
 })
 export class LaptopComponent implements OnInit {
-  allLaptops : Laptop[] = null;
+  allLaptops: Laptop[] = null;
 
   constructor(public restApi: ApiconfigService) {}
 
   ngOnInit(): void {
-    this.restApi.getLaptops().pipe(first()).subscribe(laptops => this.allLaptops = laptops)
-    
-
+    this.restApi
+      .getLaptops()
+      .pipe(first())
+      .subscribe((laptops) => (this.allLaptops = laptops));
   }
 
   onGetLaptop() {
-    this.restApi.getLaptops().subscribe(data => {
+    this.restApi.getLaptops().subscribe((data) => {
       console.log(data);
     });
   }
@@ -29,14 +30,16 @@ export class LaptopComponent implements OnInit {
     var laptop: Laptop = new Laptop();
 
     // this should be a form
-    laptop.name = "my awasome name2";
-    laptop.type = "linux is bestttt";
-    laptop.price = "40";
+    laptop.name = 'my awasome name2';
+    laptop.type = 'linux is bestttt';
+    laptop.price = 40;
     laptop.user_ID = 1;
+  }
 
-
-    this.restApi.postLaptop(laptop).subscribe(data => {
-      console.log(data);
+  onDeleteLaptop(id: number) {
+    this.restApi.deleteLaptop(id).subscribe((response) => {
+      console.log(response);
+      this.ngOnInit();
     });
   }
 }
