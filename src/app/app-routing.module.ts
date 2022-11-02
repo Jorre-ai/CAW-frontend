@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LaptopComponent } from './components/laptop/laptop.component';
-import { AddEditComponent } from './components/laptop/add-edit/add-edit.component';
+import { LaptopAddEditComponent } from './components/laptop/laptop-add-edit/laptop-add-edit.component';
 import { RequestFormComponent } from './components/request-form/request-form.component';
 import { SuccesComponent } from './components/request-form/succes/succes.component';
 import { StockFormComponent } from './components/stock-form/stock-form.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { RequestComponent } from './components/request/request.component';
 import { DetailComponent } from './components/request/detail/detail.component'
+import { CawComponent } from './components/caw/caw.component';
+import { RequestAddEditComponent } from './components/request/request-add-edit/request-add-edit.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -28,14 +30,16 @@ const routes: Routes = [
   // laptop routing
 
   { path: 'laptops', component: LaptopComponent},
-  { path: 'laptops/add', component: AddEditComponent},
-  { path: 'laptops/edit/:id', component: AddEditComponent},
+  { path: 'laptops/add', component: LaptopAddEditComponent},
+  { path: 'laptops/edit/:id', component: LaptopAddEditComponent},
 
   // request routing
   { path: 'requests', component: RequestComponent},
+  { path: 'requests/add', component: RequestAddEditComponent},
   { path: 'requests/detail/:id', component: DetailComponent},
 
-
+  // caw routing
+  { path: 'caw', component: CawComponent},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

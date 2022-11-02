@@ -1,0 +1,77 @@
+<p>request-add-edit works!</p>
+
+<div class="container">
+    <h1 *ngIf="isAddMode">Add Request</h1>
+    <h1 *ngIf="!isAddMode">Edit Request</h1>
+
+    <div class="jumbotron bg-light p-1">
+<!--         <div *ngFor="let request of allRequests">
+            <div *ngIf="request.id == this.id">
+                <p>Requester</p>
+            </div>
+        </div> -->
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-row m-3">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" formControlName="email" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="form-group m-3">
+                <label for="count">Number of Laptops</label>
+                <select name="count" id="count" formControlName="count" class="form-control">
+                    <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" value="{{num}}">{{num}}</option>
+                </select>
+            </div>
+
+            <div class="m-3 col">
+                <!-- <div class="row " style="justify-content: center">
+                    <span class="col-4 mx-2">
+                        <input type="radio" id="Windows" class="btn-check" formControlName="type_os" value="Windows" style="display: none" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                        <label for="Windows" class="btn btn-outline-secondary">Windows</label>
+                    </span>
+                    <span class="col-4 mx-2">
+                        <input type="radio" id="Linux" class="btn-check" formControlName="type_os"  value="Linux" style="display: none" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                        <label for="Linux" class="btn btn-outline-secondary">Linux</label>
+                    </span>
+                </div> -->
+<!--                 <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                    <div *ngIf="f.type.errors.required">Type is required</div>
+                </div> -->
+            </div>
+
+            <div class="form-row m-3">
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" formControlName="description" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-row m-3">
+                <label for="type_os">Laptop type</label>
+                <select formControlName="type_os" class="form-control">
+                    <option>Linux</option>
+                    <option>Windows</option>
+                  </select>
+            </div>
+
+            <div class="form-group m-3">
+                <label for="caw_id">Deelwerking CAW</label>
+                <select name="caw_id" id="caw_id" formControlName="caw_id"  class="form-control">
+                    <option *ngFor="let caw of allCaws" value="{{caw.id}}">{{caw.name}}</option>
+                </select>
+            </div>
+
+            
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a routerLink="/requests" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</div>

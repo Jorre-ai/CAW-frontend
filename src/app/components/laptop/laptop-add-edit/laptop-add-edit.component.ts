@@ -9,10 +9,10 @@ import { LaptopCreate } from 'src/app/_models/laptop';
 
 @Component({
   selector: 'app-add-edit',
-  templateUrl: './add-edit.component.html',
-  styleUrls: ['./add-edit.component.css'],
+  templateUrl: './laptop-add-edit.component.html',
+  styleUrls: ['./laptop-add-edit.component.css'],
 })
-export class AddEditComponent implements OnInit {
+export class LaptopAddEditComponent implements OnInit {
   form!: FormGroup;
   id!: number;
   isAddMode!: boolean;

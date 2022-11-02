@@ -1,10 +1,34 @@
-<div *ngFor="let laptopRequest of allRequests" >
-    <div *ngIf="laptopRequest.id.toString() == this.id">
-        <!-- Everything Laptop Specific in this part -->
-
-        <p>{{laptopRequest.name}}</p>
-
+<div *ngFor="let request of allRequests">
+    <div *ngIf="request.id.toString() == this.id">
+        <div class="container">
+            <h2>Details</h2>
         
+            <div class="jumbotron bg-light p-1">
+
+                
+                <button type="submit" class="btn btn-outline-secondary">Save</button>
+                <a routerLink="/requests" class="btn btn-link">Back</a>  
+
+            </div>
+        </div>
+
+
 
     </div>
 </div>
+
+
+    
+    
+
+ <!--    <div class="col-2">
+        <label for="">Select a laptop</label>
+        <select [ngModel]="selectedLaptopId" (ngModelChange)="onSelectLaptop($event)" name="">
+            <option [value]="i.id" *ngFor="let i of allLaptops">{{i.name}} {{i.type}}</option>
+        </select>
+    </div> -->
+
+    
+
+    
+

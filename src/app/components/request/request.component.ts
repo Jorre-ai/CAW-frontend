@@ -4,6 +4,7 @@ import { filter } from 'rxjs';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
 import { LaptopRequest } from 'src/app/_models/laptoprequest';
 import { map } from 'rxjs';
+import { Caw } from 'src/app/_models/caw';
 
 @Component({
   selector: 'app-request',
@@ -14,11 +15,12 @@ export class RequestComponent implements OnInit{
   allRequests: LaptopRequest[] = [];
   pendingRequests: LaptopRequest[] = [];
   approvedRequests: LaptopRequest[] = [];
+  allCaws: Caw[] = [];
 
 
   constructor(public restApi: ApiconfigService) { 
-    this.restApi.getLaptopRequests().
-    pipe(map(requests => {
+    this.restApi.getLaptopRequests()
+    .pipe(map(requests => {
       for(let request of requests){
         if (request.status == "pending"){
           this.pendingRequests.push(request)
@@ -30,6 +32,7 @@ export class RequestComponent implements OnInit{
       return requests}
       ))
     .subscribe()
+    this.restApi.getCaws().pipe(first()).subscribe((caws) => (this.allCaws = caws))
   }
 
   ngOnInit(): void {

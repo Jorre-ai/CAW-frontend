@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { LaptopRequest, LaptopRequestRequest } from '../_models/laptoprequest';
+import { LaptopRequest } from '../_models/laptoprequest';
 import { Laptop, LaptopCreate, LaptopEdit } from '../_models/laptop';
 import { first } from 'rxjs/operators';
+import { Caw } from '../_models/caw';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +30,7 @@ export class ApiconfigService {
     );
   }
 
-  postLaptopRequest(laptopRequest: LaptopRequestRequest) {
+  postLaptopRequest(laptopRequest: LaptopRequest) {
     return this.http.post(
       this.baseUrl + '/laptoprequest',
       JSON.stringify(laptopRequest),
@@ -84,4 +85,11 @@ export class ApiconfigService {
   }
 
   // USERS
+
+
+  // CAWS
+  getCaws(){
+    console.log(this.baseUrl + '/caw');
+    return this.http.get<Caw[]>(this.baseUrl + '/caw');
+  }
 }

@@ -1,0 +1,27 @@
+<p>caw works!</p>
+
+<div class="container">
+    <h1>All Laptops</h1>
+
+    <div class="jumbotron bg-light p-1">    
+
+         <table class="table table-striped  text-dark">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Deelwerking</th>
+                    <th style="width: 30%;">E-mail</th>
+                    <th style="width: 20%;">Telefoon</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let caw of allCaws">
+                    <td>{{caw.name}}</td>
+                    <td>{{caw.email}}</td>
+                    <td>{{caw.phone}}</td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+</div>
+

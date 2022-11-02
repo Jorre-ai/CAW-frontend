@@ -1,23 +1,32 @@
 export class LaptopRequest {
     id: BigInteger;
-    name: string;
-    count: BigInteger;
+    email: string;
+    count: number;
     type_os: string;
     payment_method: string;
     description: string;
-    waranty: string;
     status: string;
-    laptop_id: BigInteger;
+    caw_id: BigInteger;
 }
 
-export class LaptopRequestRequest {
-    name: string;
+export class LaptopRequestCreate {
     email: string;
-    count: BigInteger;
+    count: number;
     type_os: string;
     payment_method: string;
     description: string;
-    waranty: string;
     status: string;
-    laptop_id: number;
+    caw_id: BigInteger;
 }
+
+export class LaptopRequestEdit {
+    id: BigInteger;
+    email: string;
+    count: number;
+    type_os: string;
+    payment_method: string;
+    description: string;
+    status: string;
+    caw_id: BigInteger;
+}
+
