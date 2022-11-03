@@ -33,7 +33,6 @@ export class LaptopComponent implements OnInit {
     laptop.name = 'my awasome name2';
     laptop.type = 'linux is bestttt';
     laptop.price = 40;
-    laptop.user_ID = 1;
   }
 
   onDeleteLaptop(id: number) {

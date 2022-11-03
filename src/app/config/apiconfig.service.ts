@@ -73,6 +73,7 @@ export class ApiconfigService {
   }
 
   updateLaptop(laptop: any) {
+    console.log("update laptop in database: ", laptop)
     return this.http.patch(
       this.baseUrl + '/laptop',
       JSON.stringify(laptop),

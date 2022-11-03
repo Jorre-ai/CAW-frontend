@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first, map } from 'rxjs';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
-import { Laptop } from 'src/app/_models/laptop';
+import { Laptop, LaptopUpdate } from 'src/app/_models/laptop';
 import { LaptopRequest } from 'src/app/_models/laptoprequest';
 
 @Component({
@@ -16,6 +16,7 @@ export class DetailComponent implements OnInit {
   id!: string;
   allRequests: LaptopRequest[] = [];
   currentRequest: LaptopRequest;
+  currentLaptop: LaptopUpdate;
   allLaptops: Laptop[] = [];
   windowsLaptops: Laptop[] = [];
   linuxLaptops: Laptop[] = [];
@@ -24,6 +25,7 @@ export class DetailComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private restApi: ApiconfigService,
   ) { 
     this.restApi.getLaptops()
@@ -39,13 +41,14 @@ export class DetailComponent implements OnInit {
       return requests}
       ))
     .subscribe()
+    
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
 
     this.form = this.formBuilder.group({
-      
+      laptop_id: ['', Validators.required]
     })
     // All requests
     this.restApi.getLaptopRequests().pipe(first())
@@ -57,12 +60,37 @@ export class DetailComponent implements OnInit {
     
   }
 
-  counter(i: number) {
-    return new Array(i);
+  onAddLaptop(){
+    this.currentLaptop;
+    console.log(this.form.value.laptop_id)
+    for (let laptop of this.allLaptops){
+      if (laptop.id == this.form.value.laptop_id){
+        this.currentLaptop = {
+          "id": laptop.id,
+          "status": laptop.status,          
+          "isPaid": laptop.isPaid,
+          "isFree": laptop.isFree,
+          "soldDate": "2022-11-03T10:47:10.958Z",
+          "request_id": +this.id,
+        }      
+        console.log(this.currentLaptop)  
+      }
+    }
+    //this.restApi.getLaptopById(this.form.value.laptop_id).subscribe(result => this.currentLaptop = result);
+    /* this.restApi.getLaptopById(this.form.value.laptop_id)
+    .pipe(map(laptop => {
+      this.currentLaptop = laptop;
+      return laptop
+    })).subscribe(laptop => console.log("pipe shows this",laptop)); */
+
+
+//    console.log("this is current laptop",this.currentLaptop);
+//    console.log(this.id);
+//    this.currentLaptop.request_id = +this.id - 0;
+    this.restApi.updateLaptop(this.currentLaptop).subscribe(result => console.log("this is the result",result))
+    this.router.navigate(['/requests/detail/' + this.id])
   }
 
-  onSubmit(){
-    console.log(this.form.value)
-  }
+ 
 
 }

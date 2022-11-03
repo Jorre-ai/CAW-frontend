@@ -3,8 +3,11 @@ export class Laptop {
   name: string;
   type: string;
   price: number;
-  user_ID: Number;
   status: string;
+  isPaid: boolean;
+  isFree: boolean;
+  soldDate: string;
+  request_id: number;
 }
 
 export class LaptopCreate {
@@ -24,4 +27,12 @@ export class LaptopEdit {
   status: string;
   isPaid: boolean;
   isFree: boolean;
+}
+export class LaptopUpdate {
+  id: number;
+  status: string;
+  isPaid: boolean;
+  isFree: boolean;
+  soldDate: string;
+  request_id: number;
 }

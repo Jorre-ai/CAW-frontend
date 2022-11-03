@@ -4,18 +4,33 @@
             <h2>Details</h2>
         
             <div class="jumbotron bg-light p-1">
-
+                <form action="" class="row m-2 form-group" [formGroup]="form" (ngSubmit)="onAddLaptop()">
+                    <label for="laptop_id"></label>
+                    <select name="laptop_id" id="laptop_id" formControlName="laptop_id"  class="col-8">
+                        <option *ngFor="let laptop of allLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
+                    </select>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">
+                            Add Laptop
+                        </button>                 
+                    </div>
+                </form>
                 
-                <button type="submit" class="btn btn-outline-secondary">Save</button>
+                    
+                    
+                   
+                
+                
+                <button type="submit" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">Save</button>
                 <a routerLink="/requests" class="btn btn-link">Back</a>  
 
             </div>
         </div>
-
-
-
     </div>
 </div>
+
+    
+
 
 
     
