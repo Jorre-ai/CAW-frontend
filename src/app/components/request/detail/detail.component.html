@@ -1,27 +1,55 @@
 <div *ngFor="let request of allRequests">
-    <div *ngIf="request.id.toString() == this.id">
+    <div *ngIf="+request.id == this.id">
+
         <div class="container">
             <h2>Details</h2>
         
             <div class="jumbotron bg-light p-1">
-                <form action="" class="row m-2 form-group" [formGroup]="form" (ngSubmit)="onAddLaptop()">
+                <form *ngIf="requestLaptops.length < request.count" action="" class="row m-2 form-group" [formGroup]="form" (ngSubmit)="onAddLaptop()">
                     <label for="laptop_id"></label>
                     <select name="laptop_id" id="laptop_id" formControlName="laptop_id"  class="col-8">
-                        <option *ngFor="let laptop of allLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
+                        <option *ngFor="let laptop of allFreeLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
                     </select>
+                    
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary">
                             Add Laptop
                         </button>                 
                     </div>
+                    <div *ngIf="this.submitted && this.f.laptop_id.errors" class="">
+                        <p *ngIf="this.f.laptop_id.errors.required">Selecting a laptop is required</p>
+                    </div>
+                    
                 </form>
+
+                <table class="table table-striped  text-dark">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">ID</th>
+                            <th style="width: 35%">Naam</th>
+                            <th style="width: 20%">System</th>
+                            <th style="width: 20%">Price</th>
+                            <th style="width: 10%"  *ngIf="request.status != 'approved'">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let laptop of requestLaptops">
+                            <td>{{laptop.id}}</td>
+                            <td>{{laptop.name}}</td>
+                            <td>{{laptop.type}}</td>
+                            <td>{{laptop.price}} euro</td>
+                            <td *ngIf="request.status != 'approved'">
+                                <button (click)="onRemoveLaptop(laptop.id)" class="btn btn-outline-secondary">Remove
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
                 
                     
-                    
-                   
-                
-                
-                <button type="submit" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">Save</button>
+                <button *ngIf="requestLaptops.length == request.count && request.status != 'approved'" (click)="approveRequest(+request.id)" class="btn btn-outline-secondary">Confirm
+                </button>
                 <a routerLink="/requests" class="btn btn-link">Back</a>  
 
             </div>

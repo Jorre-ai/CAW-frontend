@@ -6,7 +6,6 @@ export class Laptop {
   status: string;
   isPaid: boolean;
   isFree: boolean;
-  soldDate: string;
   request_id: number;
 }
 
@@ -36,3 +35,4 @@ export class LaptopUpdate {
   soldDate: string;
   request_id: number;
 }
+

@@ -30,6 +30,14 @@ export class ApiconfigService {
     );
   }
 
+  getLaptopRequestById(id: number){
+    return this.http.get<LaptopRequest>(
+      this.baseUrl + '/laptoprequest/' + id,
+      this.httpOptions
+    );
+
+  }
+
   postLaptopRequest(laptopRequest: LaptopRequest) {
     return this.http.post(
       this.baseUrl + '/laptoprequest',
@@ -84,6 +92,11 @@ export class ApiconfigService {
   deleteLaptop(id: number) {
     return this.http.delete(this.baseUrl + '/laptop/' + id);
   }
+
+  getLaptopsByRequestId(id: number){
+    return this.http.get<Laptop[]>(this.baseUrl + '/laptop/request/' + id)
+  }
+
 
   // USERS
 
