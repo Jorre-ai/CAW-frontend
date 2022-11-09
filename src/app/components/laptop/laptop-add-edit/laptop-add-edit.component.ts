@@ -67,7 +67,7 @@ export class LaptopAddEditComponent implements OnInit {
     this.alertService.clear();
 
     if (this.form.invalid) {
-      console.log('unvalid form');
+      console.log('Invalid form');
       return;
     }
 

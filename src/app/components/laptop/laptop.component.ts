@@ -20,21 +20,6 @@ export class LaptopComponent implements OnInit {
       .subscribe((laptops) => (this.allLaptops = laptops));
   }
 
-  onGetLaptop() {
-    this.restApi.getLaptops().subscribe((data) => {
-      console.log(data);
-    });
-  }
-
-  onCreateLaptop() {
-    var laptop: Laptop = new Laptop();
-
-    // this should be a form
-    laptop.name = 'my awasome name2';
-    laptop.type = 'linux is bestttt';
-    laptop.price = 40;
-  }
-
   onDeleteLaptop(id: number) {
     this.restApi.deleteLaptop(id).subscribe((response) => {
       console.log(response);

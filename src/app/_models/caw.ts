@@ -1,5 +1,5 @@
 export class Caw{
-    id: BigInteger;
+    id: number;
     name: string;
     email: string;
     phone: string;

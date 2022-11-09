@@ -4,10 +4,6 @@
     <h1 *ngIf="!isAddMode">Edit Laptop</h1>
     <div class="jumbotron bg-light p-1">
 
-        <div *ngFor="let laptop of allLaptops" >
-            <div *ngIf="laptop.id == this.id">
-            </div>
-        </div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">
                 <div class="form-group">

@@ -22,6 +22,13 @@ export class CawComponent implements OnInit {
     this.restApi.getCaws().pipe(first()).subscribe(data => console.log(data))
   }
 
+  onDeleteCaw(id: number){
+    this.restApi.deleteCaw(id).subscribe((response) =>{
+      console.log(response);
+      this.ngOnInit();
+    })
+  }
+
 
 
 }

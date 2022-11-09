@@ -93,4 +93,32 @@ export class ApiconfigService {
     console.log(this.baseUrl + '/caw');
     return this.http.get<Caw[]>(this.baseUrl + '/caw');
   }
+
+  getCawById(id: number){
+    return this.http.get<Caw>(
+      this.baseUrl + '/caw/' + id
+    );
+  }
+
+  postCaw(caw: Caw): Observable<Caw>{
+    return this.http.post<Caw>(
+      this.baseUrl + "/caw",
+      JSON.stringify(caw),
+      this.httpOptions
+    )
+  }
+
+  editCaw(caw: Caw): Observable<Caw> {
+    return this.http.patch<Caw>(
+      this.baseUrl + '/caw',
+      JSON.stringify(caw),
+      this.httpOptions
+    )
+  }
+
+  deleteCaw(id: number){
+    return this.http.delete(this.baseUrl + "/caw/" + id);
+  }
+
+
 }

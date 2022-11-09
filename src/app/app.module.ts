@@ -26,6 +26,7 @@ import { DetailComponent } from './components/request/detail/detail.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CawComponent } from './components/caw/caw.component';
 import { RequestAddEditComponent } from './components/request/request-add-edit/request-add-edit.component';
+import { CawAddEditComponent } from './components/caw/caw-add-edit/caw-add-edit.component';
 
 
 
@@ -45,6 +46,7 @@ import { RequestAddEditComponent } from './components/request/request-add-edit/r
     DetailComponent,
     CawComponent,
     RequestAddEditComponent,
+    CawAddEditComponent,
   ],
   imports: [
     BrowserModule,

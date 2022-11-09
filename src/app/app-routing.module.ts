@@ -11,6 +11,7 @@ import { RequestComponent } from './components/request/request.component';
 import { DetailComponent } from './components/request/detail/detail.component'
 import { CawComponent } from './components/caw/caw.component';
 import { RequestAddEditComponent } from './components/request/request-add-edit/request-add-edit.component';
+import { CawAddEditComponent } from './components/caw/caw-add-edit/caw-add-edit.component';
 
 const accountModule = () => import('./account/account.module').then(x => x.AccountModule);
 const usersModule = () => import('./users/users.module').then(x => x.UsersModule);
@@ -40,6 +41,8 @@ const routes: Routes = [
 
   // caw routing
   { path: 'caw', component: CawComponent},
+  { path: 'caw/add', component: CawAddEditComponent},
+  { path: 'caw/edit/:id', component: CawAddEditComponent},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
