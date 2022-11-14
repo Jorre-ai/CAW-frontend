@@ -36,6 +36,8 @@ export class LaptopAddEditComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
 
+
+
     this.form = this.formBuilder.group({
       name: [
         '',
@@ -46,11 +48,23 @@ export class LaptopAddEditComponent implements OnInit {
         ],
       ],
       type: ['', Validators.required],
-      isPaid: ['', Validators.required],
-      isFree: ['', Validators.required]
     });
 
     if (!this.isAddMode) {
+      this.form = this.formBuilder.group({
+        name: [
+          '',
+          [
+            Validators.minLength(6),
+            Validators.required,
+            Validators.pattern('[a-zA-Z0-9 ]*'),
+          ],
+        ],
+        type: ['', Validators.required],
+        isPaid: ['', Validators.required],
+        isFree: ['', Validators.required]
+      });
+
       this.restApi
         .getLaptopById(this.id)
         .pipe(first())

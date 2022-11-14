@@ -48,14 +48,14 @@ export class RequestAddEditComponent implements OnInit {
       caw_id: ['', Validators.required],
     })
 
-/*     if (!this.isAddMode){
+     if (!this.isAddMode){
       this.restApi
-        .getRequestById(this.id)
+        .getLaptopRequestById(this.id)
         .pipe(first())
         .subscribe((response) => {
           this.form.patchValue(response);
         })
-    } */
+    } 
   }
 
   get f() {

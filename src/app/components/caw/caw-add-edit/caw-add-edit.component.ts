@@ -17,7 +17,7 @@ export class CawAddEditComponent implements OnInit {
   isAddMode!: boolean;
   loading = false;
   submitted = false;
-  caw: Caw = null;
+  caw: Caw;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,17 +32,19 @@ export class CawAddEditComponent implements OnInit {
     this.isAddMode = !this.id;
 
     this.form = this.formBuilder.group({
-      name: ['', [Validators.required,]],
+      name: ['', Validators.required],
       email: [''],
       phone: ['']
     })
 
+    
     if (!this.isAddMode){
+      console.log("This isn't addmode")
       this.restApi
         .getCawById(this.id)
-        .pipe(first())
         .subscribe((response) => {
           this.form.patchValue(response);
+          console.log("Response:",response)
         })
     }
   }

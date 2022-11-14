@@ -38,6 +38,7 @@ const routes: Routes = [
   { path: 'requests', component: RequestComponent},
   { path: 'requests/add', component: RequestAddEditComponent},
   { path: 'requests/detail/:id', component: DetailComponent},
+  { path: 'requests/edit/:id', component: RequestAddEditComponent},
 
   // caw routing
   { path: 'caw', component: CawComponent},
