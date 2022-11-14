@@ -3,7 +3,15 @@
 
     <div class="jumbotron bg-light p-1">
         <a routerLink="/laptops/add" class="btn btn-outline-secondary">Add Laptop</a>
-    
+        <div class="">
+            <button (click)="sortPaidLaptops()" class="btn btn-outline-secondary m-1">Betaalde laptops</button>
+            <button (click)="sortUnpaidLaptops()" class="btn btn-outline-secondary m-1">Onbetaalde laptops</button>
+            <button (click)="resetSort()" class="btn btn-outline-secondary m-1">Alle laptops</button>
+            <button (click)="allLinuxLaptops()" class="btn btn-outline-secondary m-1">Linux laptops</button>
+            <button (click)="allWindowsLaptops()" class="btn btn-outline-secondary m-1">All windows laptops</button>    
+        </div>
+
+        
         <table class="table table-striped  text-dark">
             <thead>
                 <tr>
