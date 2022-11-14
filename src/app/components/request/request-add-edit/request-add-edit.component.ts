@@ -43,7 +43,7 @@ export class RequestAddEditComponent implements OnInit {
       count: ['', Validators.required],
       type_os: ['', Validators.required],
       //payment_method: ['', Validators.required],
-      description: ['', Validators.required],
+      description: [''],
       //status: ['', Validators.required],
       caw_id: ['', Validators.required],
     })

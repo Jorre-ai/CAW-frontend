@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { first } from 'rxjs';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
+import { Caw } from 'src/app/_models/caw';
 import { LaptopRequest } from 'src/app/_models/laptoprequest';
+import { AlertService } from 'src/app/_services';
 
 @Component({
   selector: 'app-request-form',
@@ -10,41 +13,66 @@ import { LaptopRequest } from 'src/app/_models/laptoprequest';
   styleUrls: ['./request-form.component.css']
 })
 export class RequestFormComponent implements OnInit {
+  form!: FormGroup;
+  id!: number;
+  isAddMode!: boolean;
+  loading = false;
+  submitted = false;
+  allRequests: LaptopRequest[] = [];
+  currentRequest: LaptopRequest = null
+  allCaws: Caw[] = [];
 
-  public requestLaptopForm: FormGroup = new FormGroup({
-    email: new FormControl("", [Validators.required]),
-    type_os: new FormControl("", [Validators.required]),
-    count: new FormControl("", [Validators.required]),
-    description: new FormControl("", [Validators.required]),
-    payment_method: new FormControl("", [Validators.required]),
-    status: new FormControl("pending")
-  })
+  
 
-  constructor(public restApi: ApiconfigService, public router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private restApi: ApiconfigService,
+    private alertService: AlertService,
+    ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;
+    this.restApi.getCaws().pipe(first()).subscribe((caws) => (this.allCaws = caws))
+
+
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required],
+      count: ['', Validators.required],
+      type_os: ['', Validators.required],
+      //payment_method: ['', Validators.required],
+      description: [''],
+      //status: ['', Validators.required],
+      caw_id: ['', Validators.required],
+    })
+  }
+
+  get f() {
+    return this.form.controls;
   }
 
   public onSubmit(): void {
-    console.log(this.requestLaptopForm.value);
+    this.submitted = true;
+    this.alertService.clear();
 
-    var laptopRequest: LaptopRequest = {
-      id: null,
-      email: "test" + this.requestLaptopForm.value.email,
-      count: this.requestLaptopForm.value.count,
-      type_os: this.requestLaptopForm.value.type_os,
-      payment_method: "payment method",
-      description: this.requestLaptopForm.value.description,
-      status: "pending",
-      caw_id: new Uint8Array(1),
+    if (this.form.invalid){
+      console.log('unvalid form')
+      return
     }
 
-    this.restApi.postLaptopRequest(laptopRequest).subscribe(response => {
-      console.log(response);
+    this.currentRequest = this.form.value;
 
-      this.router.navigate(['/request/succes'])
-    });
+    console.log(this.currentRequest)
+    //this.currentRequest.type_os = "Windows";
+    this.currentRequest.payment_method = "none";
+    this.currentRequest.status = "pending";
+    this.restApi.postLaptopRequest(this.currentRequest)
+      .subscribe(response => {
+        this.router.navigate(['/request/succes'], { relativeTo: this.route });
 
+      })
   }
 
 }

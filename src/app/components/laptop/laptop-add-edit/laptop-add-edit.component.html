@@ -33,7 +33,25 @@
                 <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
                     <div *ngIf="f.type.errors.required">Type is required</div>
                 </div>
-            </div>            
+            </div>
+
+            <div class="m-3 col row">
+                <span class="col-4"></span>
+                    <div class="col-2">
+                        <input type="checkbox" id="isPaid" class="btn-check" formControlName="isPaid">
+                        <label for="isPaid" class="btn btn-outline-secondary">Is Paid</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="checkbox" id="isFree" class="btn-check" formControlName="isFree">
+                        <label for="isFree" class="btn btn-outline-secondary">Is Free</label>
+                    </div>
+                
+
+            </div>
+            
+            
+
+
         
             <div class="form-group m-3">
                 <button [disabled]="loading" class="btn btn-primary">

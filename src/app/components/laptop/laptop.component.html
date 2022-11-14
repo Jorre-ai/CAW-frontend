@@ -24,13 +24,16 @@
                         <td>{{laptop.name}}</td>
                         <td>{{laptop.type}}</td>
                         <td>{{laptop.price}} euro</td>
-                        <td>
-                            <button class="btn btn-outline-danger">isPaid</button>
+                        <td *ngIf="laptop.isPaid">
+                            Betaald
                         </td>
-                        <td>
-                            <button class="btn btn-outline-danger">isFree</button>
+                        <td *ngIf="!laptop.isPaid">
                         </td>
-    
+                        <td *ngIf="!laptop.isFree">
+                        </td>
+                        <td *ngIf="laptop.isFree">
+                            Gratis
+                        </td>
                         <td>
                             <a routerLink="/laptops/edit/{{laptop.id}}" class="btn btn-outline-secondary">Edit</a>
                         </td>

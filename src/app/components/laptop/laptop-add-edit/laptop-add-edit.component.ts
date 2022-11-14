@@ -46,6 +46,8 @@ export class LaptopAddEditComponent implements OnInit {
         ],
       ],
       type: ['', Validators.required],
+      isPaid: ['', Validators.required],
+      isFree: ['', Validators.required]
     });
 
     if (!this.isAddMode) {
@@ -54,6 +56,7 @@ export class LaptopAddEditComponent implements OnInit {
         .pipe(first())
         .subscribe((response) => {
           this.form.patchValue(response);
+          console.log(response)
         });
     }
   }
@@ -97,8 +100,8 @@ export class LaptopAddEditComponent implements OnInit {
       ? (this.editLaptopObject.price = 50)
       : (this.editLaptopObject.price = 30);
     this.editLaptopObject.status = 'available';
-    this.editLaptopObject.isPaid = false;
-    this.editLaptopObject.isFree = false;
+    this.editLaptopObject.isPaid = this.form.get('isPaid')?.value;
+    this.editLaptopObject.isFree = this.form.get('isFree')?.value;
 
     this.restApi.editLaptop(this.editLaptopObject).subscribe((response) => {
       this.router.navigate(['/laptops'], { relativeTo: this.route });
