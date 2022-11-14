@@ -28,13 +28,13 @@ export class LaptopComponent implements OnInit {
     });
   }
 
-  sortPaidLaptops(){
+  sortPaidLaptops(isPaid: boolean){
     this.restApi
     .getLaptops()
     .pipe(map(laptops => {
       this.allLaptops.splice(0, this.allLaptops.length)
       for(let laptop of laptops){
-        if (laptop.isPaid == true){
+        if (laptop.isPaid == isPaid){
           console.log(laptop)
           this.allLaptops.push(laptop)
         }
@@ -44,56 +44,13 @@ export class LaptopComponent implements OnInit {
     .subscribe();
   }
 
-  sortUnpaidLaptops(){
+  allTypedLaptops(type: string){
     this.restApi
     .getLaptops()
     .pipe(map(laptops => {
       this.allLaptops.splice(0, this.allLaptops.length)
       for(let laptop of laptops){
-        if (laptop.isPaid == false){
-          console.log(laptop)
-          this.allLaptops.push(laptop)
-        }
-      }
-      return laptops
-    }))
-    .subscribe();
-  }
-  resetSort(){
-    this.restApi
-    .getLaptops()
-    .pipe(map(laptops => {
-      this.allLaptops.splice(0, this.allLaptops.length)
-      for(let laptop of laptops){
-        this.allLaptops.push(laptop)
-      }
-      return laptops
-    }))
-    .subscribe();
-  }
-  allLinuxLaptops(){
-    this.restApi
-    .getLaptops()
-    .pipe(map(laptops => {
-      this.allLaptops.splice(0, this.allLaptops.length)
-      for(let laptop of laptops){
-        if (laptop.type == "Linux"){
-          console.log(laptop)
-          this.allLaptops.push(laptop)
-        }
-      }
-      return laptops
-    }))
-    .subscribe();
-  }
-
-  allWindowsLaptops(){
-    this.restApi
-    .getLaptops()
-    .pipe(map(laptops => {
-      this.allLaptops.splice(0, this.allLaptops.length)
-      for(let laptop of laptops){
-        if (laptop.type == "Windows"){
+        if (laptop.type == type){
           console.log(laptop)
           this.allLaptops.push(laptop)
         }

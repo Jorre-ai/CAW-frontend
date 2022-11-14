@@ -47,10 +47,10 @@ export class DetailComponent implements OnInit {
     this.restApi.getLaptops()
     .pipe(map(requests => {
       for(let request of requests){
-        if (request.type == "Windows"){
+        if (request.type == "Windows" && request.status == "available"){
           this.windowsLaptops.push(request)
         }
-        if (request.type == "Linux"){
+        if (request.type == "Linux" && request.status == "available"){
           this.linuxLaptops.push(request)
         }
         if (request.status == "available"){

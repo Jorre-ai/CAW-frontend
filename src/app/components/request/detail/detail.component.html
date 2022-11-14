@@ -6,19 +6,33 @@
         
             <div class="jumbotron bg-light p-1">
                 <form *ngIf="requestLaptops.length < request.count" action="" class="row m-2 form-group" [formGroup]="form" (ngSubmit)="onAddLaptop()">
-                    <label for="laptop_id"></label>
-                    <select name="laptop_id" id="laptop_id" formControlName="laptop_id"  class="col-8">
-                        <option *ngFor="let laptop of allFreeLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
-                    </select>
+                    <div class="row">
+                        <div *ngIf="request.type_os == 'Linux'" class="col-8">
+                            <label for="laptop_id"></label>
+                            <select name="laptop_id" id="laptop_id" formControlName="laptop_id" class="col-12">
+                                <option *ngFor="let laptop of linuxLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
+                            </select>
+                        </div>
+                        
+    
+                        <div *ngIf="request.type_os == 'Windows'" class="col-8">
+                            <label for="laptop_id" ></label>
+                            <select name="laptop_id" id="laptop_id" formControlName="laptop_id" class="col-12" style="height: 100%">
+                                <option *ngFor="let laptop of windowsLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
+                            </select>
+                        </div>
+                        
+                        
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary">
+                                Add Laptop
+                            </button>                 
+                        </div>
+                        <div *ngIf="this.submitted && this.f.laptop_id.errors" class="">
+                            <p *ngIf="this.f.laptop_id.errors.required">Selecting a laptop is required</p>
+                        </div>
+                    </div>
                     
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary">
-                            Add Laptop
-                        </button>                 
-                    </div>
-                    <div *ngIf="this.submitted && this.f.laptop_id.errors" class="">
-                        <p *ngIf="this.f.laptop_id.errors.required">Selecting a laptop is required</p>
-                    </div>
                     
                 </form>
 
