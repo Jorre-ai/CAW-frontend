@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first, map } from 'rxjs';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
+import { Caw } from 'src/app/_models/caw';
 import { Laptop, LaptopUpdate } from 'src/app/_models/laptop';
 import { LaptopRequest } from 'src/app/_models/laptoprequest';
 import { AlertService } from 'src/app/_services';
@@ -25,6 +26,7 @@ export class DetailComponent implements OnInit {
   linuxLaptops: Laptop[] = [];
   allFreeLaptops: Laptop[] = [];
   requestLaptops: Laptop[] = [];
+  currentCaw: Caw;
 
 
   constructor(
@@ -45,16 +47,16 @@ export class DetailComponent implements OnInit {
       laptop_id: ['', Validators.required]
     })
     this.restApi.getLaptops()
-    .pipe(map(requests => {
-      for(let request of requests){
-        if (request.type == "Windows" && request.status == "available"){
-          this.windowsLaptops.push(request)
+    .pipe(map(laptops => {
+      for(let laptop of laptops){
+        if (laptop.type == "Windows" && laptop.status == "available"){
+          this.windowsLaptops.push(laptop)
         }
-        if (request.type == "Linux" && request.status == "available"){
-          this.linuxLaptops.push(request)
+        if (laptop.type == "Linux" && laptop.status == "available"){
+          this.linuxLaptops.push(laptop)
         }
-        if (request.status == "available"){
-          this.allFreeLaptops.push(request)
+        if (laptop.status == "available"){
+          this.allFreeLaptops.push(laptop)
         }
       }
       return}
@@ -130,7 +132,7 @@ export class DetailComponent implements OnInit {
   }
 
   approveRequest(id: number){
-    this.currentRequest.status = "approved"
+    this.currentRequest.status = "goedgekeurd"
     this.restApi.editLaptopRequest(this.currentRequest).subscribe(result => console.log("This is the result", result))
     this.router.navigate(['/requests'])
   }

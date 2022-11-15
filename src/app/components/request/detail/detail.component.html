@@ -2,14 +2,23 @@
     <div *ngIf="+request.id == this.id">
 
         <div class="container">
-            <h2>Details</h2>
         
-            <div class="jumbotron bg-light p-1">
+            <div class="jumbotron bg-light p-1 mt-2">
+                <h2>Aangevraagde laptops: {{request.count}} {{request.type_os}} Laptops</h2>
+                <div class="row" >
+                    <span class="col-3"></span>
+                    <div class="col-6">
+                        <p></p>
+
+                    </div>
+
+                </div>
+
                 <form *ngIf="requestLaptops.length < request.count" action="" class="row m-2 form-group" [formGroup]="form" (ngSubmit)="onAddLaptop()">
                     <div class="row">
                         <div *ngIf="request.type_os == 'Linux'" class="col-8">
                             <label for="laptop_id"></label>
-                            <select name="laptop_id" id="laptop_id" formControlName="laptop_id" class="col-12">
+                            <select name="laptop_id" id="laptop_id" formControlName="laptop_id" class="col-12" style="height: 100%; border-radius: 5px;">
                                 <option *ngFor="let laptop of linuxLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
                             </select>
                         </div>
@@ -17,7 +26,7 @@
     
                         <div *ngIf="request.type_os == 'Windows'" class="col-8">
                             <label for="laptop_id" ></label>
-                            <select name="laptop_id" id="laptop_id" formControlName="laptop_id" class="col-12" style="height: 100%">
+                            <select name="laptop_id" id="laptop_id" formControlName="laptop_id" class="col-12" style="height: 100%; border-radius: 5px;">
                                 <option *ngFor="let laptop of windowsLaptops" value="{{laptop.id}}">{{laptop.name}}</option>
                             </select>
                         </div>
@@ -25,11 +34,11 @@
                         
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary">
-                                Add Laptop
+                                Voeg laptop toe
                             </button>                 
                         </div>
                         <div *ngIf="this.submitted && this.f.laptop_id.errors" class="">
-                            <p *ngIf="this.f.laptop_id.errors.required">Selecting a laptop is required</p>
+                            <p *ngIf="this.f.laptop_id.errors.required">Selecteer een laptop om hem toe te voegen aan deze aanvraag</p>
                         </div>
                     </div>
                     
@@ -39,21 +48,20 @@
                 <table class="table table-striped  text-dark">
                     <thead>
                         <tr>
-                            <th style="width: 5%">ID</th>
-                            <th style="width: 35%">Naam</th>
-                            <th style="width: 20%">System</th>
-                            <th style="width: 20%">Price</th>
-                            <th style="width: 10%"  *ngIf="request.status != 'approved'">Remove</th>
+                            
+                            <th style="width: 40%">Naam</th>
+                            <th style="width: 20%">Besturingssysteem</th>
+                            <th style="width: 20%">Prijs</th>
+                            <th style="width: 10%"  *ngIf="request.status != 'goedgekeurd'">Verwijder</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let laptop of requestLaptops">
-                            <td>{{laptop.id}}</td>
                             <td>{{laptop.name}}</td>
                             <td>{{laptop.type}}</td>
                             <td>{{laptop.price}} euro</td>
-                            <td *ngIf="request.status != 'approved'">
-                                <button (click)="onRemoveLaptop(laptop.id)" class="btn btn-outline-secondary">Remove
+                            <td *ngIf="request.status != 'goedgekeurd'">
+                                <button (click)="onRemoveLaptop(laptop.id)" class="btn btn-outline-secondary">Verwijder
                                 </button>
                             </td>
                         </tr>
@@ -62,9 +70,12 @@
                 
                 
                     
-                <button *ngIf="requestLaptops.length == request.count && request.status != 'approved'" (click)="approveRequest(+request.id)" class="btn btn-outline-secondary">Confirm
+                <button *ngIf="requestLaptops.length == request.count && request.status != 'goedgekeurd'" (click)="approveRequest(+request.id)" class="btn btn-outline-secondary">Bevestig laptop
                 </button>
-                <a routerLink="/requests" class="btn btn-link">Back</a>  
+                <a href="mailto:{{request.email}}" *ngIf="requestLaptops.length == request.count" class="btn btn-outline-secondary">Stuur Email
+                </a>
+
+                <a routerLink="/requests" class="btn btn-link" >Terug</a>  
 
             </div>
         </div>

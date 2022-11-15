@@ -1,8 +1,8 @@
 <p>request-add-edit works!</p>
 
 <div class="container">
-    <h1 *ngIf="isAddMode">Add Request</h1>
-    <h1 *ngIf="!isAddMode">Edit Request</h1>
+    <h1 *ngIf="isAddMode">Aanvraag toevoegen</h1>
+    <h1 *ngIf="!isAddMode">Aanvraag bewerken</h1>
 
     <div class="jumbotron bg-light p-1">
 <!--         <div *ngFor="let request of allRequests">
@@ -13,14 +13,14 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Contact email addres</label>
                     <input type="text" id="email" formControlName="email" class="form-control">
                 </div>
 
             </div>
 
             <div class="form-group m-3">
-                <label for="count">Number of Laptops</label>
+                <label for="count">Aantal Laptops</label>
                 <select name="count" id="count" formControlName="count" class="form-control">
                     <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" value="{{num}}">{{num}}</option>
                 </select>
@@ -44,16 +44,16 @@
 
             <div class="form-row m-3">
                 <div class="form-group">
-                    <label for="description">Description</label>
+                    <label for="description">Beschrijving</label>
                     <input type="text" id="description" formControlName="description" class="form-control">
                 </div>
             </div>
 
             <div class="form-row m-3">
-                <label for="type_os">Laptop type</label>
+                <label for="type_os">Besturingssysteem van de laptops</label>
                 <select formControlName="type_os" class="form-control">
-                    <option>Linux</option>
-                    <option>Windows</option>
+                    <option value="Linux">Linux - &euro;30.00</option>
+                    <option Value="Windows">Windows - &euro;50.00</option>
                   </select>
             </div>
 
@@ -68,7 +68,7 @@
 
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Vraag aan</button>
             </div>
         </form>
 

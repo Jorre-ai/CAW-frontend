@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
 import { AlertService } from 'src/app/_services';
 import { LaptopRequest } from 'src/app/_models/laptoprequest';
-import { first } from 'rxjs';
+import { first, map } from 'rxjs';
 import { Caw } from 'src/app/_models/caw';
 
 @Component({
@@ -35,8 +35,20 @@ export class RequestAddEditComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
-    this.restApi.getCaws().pipe(first()).subscribe((caws) => (this.allCaws = caws))
-
+    this.restApi.getCaws().pipe(map(caws => {
+      this.allCaws = caws
+      this.allCaws.sort((a, b) => {
+        let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+        if (fa < fb){
+          return -1
+        }
+        if (fa > fb){
+          return 1
+        }
+        return 0
+      })
+    })).subscribe()
 
     this.form = this.formBuilder.group({
       email: ['', Validators.required],

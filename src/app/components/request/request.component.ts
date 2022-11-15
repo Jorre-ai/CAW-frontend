@@ -22,10 +22,10 @@ export class RequestComponent implements OnInit{
     this.restApi.getLaptopRequests()
     .pipe(map(requests => {
       for(let request of requests){
-        if (request.status == "pending"){
+        if (request.status == "lopende"){
           this.pendingRequests.push(request)
         }
-        if (request.status == "approved"){
+        if (request.status == "goedgekeurd"){
           this.approvedRequests.push(request)
         }
       }

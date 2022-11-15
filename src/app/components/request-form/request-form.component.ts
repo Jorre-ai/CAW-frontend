@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { first } from 'rxjs';
+import { first, map } from 'rxjs';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
 import { Caw } from 'src/app/_models/caw';
 import { LaptopRequest } from 'src/app/_models/laptoprequest';
@@ -35,8 +35,20 @@ export class RequestFormComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
-    this.restApi.getCaws().pipe(first()).subscribe((caws) => (this.allCaws = caws))
-
+    this.restApi.getCaws().pipe(map(caws => {
+      this.allCaws = caws
+      this.allCaws.sort((a, b) => {
+        let fa = a.name.toLowerCase(),
+        fb = b.name.toLowerCase();
+        if (fa < fb){
+          return -1
+        }
+        if (fa > fb){
+          return 1
+        }
+        return 0
+      })
+    })).subscribe()
 
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
