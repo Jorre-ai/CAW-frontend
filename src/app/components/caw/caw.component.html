@@ -1,7 +1,7 @@
 <div class="container">
-    <h1>All Caws</h1>
+    <h1>Alle Caw deelwerkingen</h1>
     <div class="jumbotron bg-light p-1">
-        <a routerLink="/caw/add" class="btn btn-outline-secondary">Add Caw</a>
+        <a routerLink="/caw/add" class="btn btn-outline-secondary">Voeg deelwerking toe</a>
 
          <table class="table table-striped  text-dark">
             <thead>
@@ -9,8 +9,8 @@
                     <th style="width: 30%;">Deelwerking</th>
                     <th style="width: 20%;">E-mail</th>
                     <th style="width: 20%;">Telefoon</th>
-                    <th style="width: 15%;">Edit</th>
-                    <th style="width: 15%;">Delete</th>
+                    <th style="width: 15%;">Bewerk</th>
+                    <th style="width: 15%;">Verwijder</th>
 
                 </tr>
 
@@ -21,10 +21,10 @@
                     <td>{{caw.email}}</td>
                     <td>{{caw.phone}}</td>
                     <td>
-                        <a routerLink="/caw/edit/{{caw.id}}" class="btn btn-outline-secondary">Edit</a>
+                        <a routerLink="/caw/edit/{{caw.id}}" class="btn btn-outline-secondary">Bewerk</a>
                     </td>
                     <td>
-                        <button (click)="onDeleteCaw(caw.id)" class="btn btn-outline-secondary">Delete</button>
+                        <button (click)="onDeleteCaw(caw.id)" class="btn btn-outline-secondary">Verwijder</button>
                     </td>
                 </tr>
             </tbody>

@@ -6,12 +6,12 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">
                 <div class="form-group">
-                    <label for="name" >Name</label>
+                    <label for="name" >Naam</label>
                     <input id="name" type="text"  formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors}">
                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                        <div *ngIf="f.name.errors.required">Name is required</div>
-                        <div *ngIf="f.name.errors.minlength">Name must be at least 6 characters</div>
-                        <div *ngIf="f.name.errors.pattern">Name can only contain alphanumerical values</div>
+                        <div *ngIf="f.name.errors.required">Naam is verplicht</div>
+                        <div *ngIf="f.name.errors.minlength">Naam moet minstens 6 characters zijn</div>
+                        <div *ngIf="f.name.errors.pattern">Naam mag enkel letters en nummers bevatten</div>
 
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     </span>
                 </div>
                 <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
-                    <div *ngIf="f.type.errors.required">Type is required</div>
+                    <div *ngIf="f.type.errors.required">Besturingssysteem is verplicht</div>
                 </div>
             </div>
 
@@ -38,11 +38,11 @@
                 <span class="col-4"></span>
                     <div class="col-2">
                         <input type="checkbox" id="isPaid" class="btn-check" formControlName="isPaid">
-                        <label for="isPaid" class="btn btn-outline-secondary">Is Paid</label>
+                        <label for="isPaid" class="btn btn-outline-secondary">Is betaald</label>
                     </div>
                     <div class="col-2">
                         <input type="checkbox" id="isFree" class="btn-check" formControlName="isFree">
-                        <label for="isFree" class="btn btn-outline-secondary">Is Free</label>
+                        <label for="isFree" class="btn btn-outline-secondary">Is gratis</label>
                     </div>
             </div>
             

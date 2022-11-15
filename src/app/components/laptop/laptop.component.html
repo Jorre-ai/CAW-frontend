@@ -1,8 +1,9 @@
 <div class="container">
-    <h1>All Laptops</h1>
+    <h1>Alle laptops</h1>
 
     <div class="jumbotron bg-light p-1">
-        <a routerLink="/laptops/add" class="btn btn-outline-secondary">Add Laptop</a>
+
+        <a routerLink="/laptops/add" class="btn btn-outline-secondary">Voeg laptop toe</a>
         <div class="">
             <button (click)="sortPaidLaptops(true)" class="btn btn-outline-secondary m-1">Betaalde laptops</button>
             <button (click)="sortPaidLaptops(false)" class="btn btn-outline-secondary m-1">Onbetaalde laptops</button>
@@ -17,12 +18,12 @@
                 <tr>
                     <th style="width: 5%">ID</th>
                     <th style="width: 35%">Naam</th>
-                    <th style="width: 10%">System</th>
-                    <th style="width: 10%">Price</th>
-                    <th style="width: 10%">Paid</th>
-                    <th style="width: 10%">Free</th>
-                    <th style="width: 10%">Edit</th>
-                    <th style="width: 10%">Delete</th>
+                    <th style="width: 10%">Besturingssysteem</th>
+                    <th style="width: 10%">Prijs</th>
+                    <th style="width: 10%">Betaald</th>
+                    <th style="width: 10%">Gratis</th>
+                    <th style="width: 10%">Bewerk</th>
+                    <th style="width: 10%">Verwijder</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,10 +44,10 @@
                             Gratis
                         </td>
                         <td>
-                            <a routerLink="/laptops/edit/{{laptop.id}}" class="btn btn-outline-secondary">Edit</a>
+                            <a routerLink="/laptops/edit/{{laptop.id}}" class="btn btn-outline-secondary">Bewerk</a>
                         </td>
                         <td>
-                            <button (click)="onDeleteLaptop(laptop.id)" class="btn btn-outline-secondary">Delete
+                            <button (click)="onDeleteLaptop(laptop.id)" class="btn btn-outline-secondary">Verwijder
                             </button>
                         </td>
                     </tr>

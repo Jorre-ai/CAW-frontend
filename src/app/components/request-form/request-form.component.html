@@ -1,4 +1,3 @@
-<p>request-add-edit works!</p>
 
 <div class="container">
     <h1 *ngIf="isAddMode">Aanvraag toevoegen</h1>
@@ -15,6 +14,11 @@
                 <div class="form-group">
                     <label for="email">Contact email addres</label>
                     <input type="text" id="email" formControlName="email" class="form-control">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">email is verplicht</div>
+                        <div *ngIf="f.email.errors.email">Ingegeven veld moet een email adres zijn</div>
+
+                    </div>
                 </div>
 
             </div>

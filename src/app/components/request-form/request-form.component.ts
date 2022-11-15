@@ -51,7 +51,10 @@ export class RequestFormComponent implements OnInit {
     })).subscribe()
 
     this.form = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
       count: ['', Validators.required],
       type_os: ['', Validators.required],
       //payment_method: ['', Validators.required],
@@ -79,7 +82,7 @@ export class RequestFormComponent implements OnInit {
     console.log(this.currentRequest)
     //this.currentRequest.type_os = "Windows";
     this.currentRequest.payment_method = "none";
-    this.currentRequest.status = "pending";
+    this.currentRequest.status = "lopende";
     this.restApi.postLaptopRequest(this.currentRequest)
       .subscribe(response => {
         this.router.navigate(['/request/succes'], { relativeTo: this.route });

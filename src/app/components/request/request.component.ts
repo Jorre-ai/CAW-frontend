@@ -39,5 +39,12 @@ export class RequestComponent implements OnInit{
     console.log("alle approved requests" , this.approvedRequests)
     console.log("alle pending requests", this.pendingRequests)
   }
+
+  onDeleteRequest(id: number){
+    this.restApi.deleteLaptopRequest(id).subscribe((response) => {
+      console.log(response);
+    });
+    window.location.reload()
+  }
 }
 

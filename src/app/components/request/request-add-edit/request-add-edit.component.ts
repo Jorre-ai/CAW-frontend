@@ -93,7 +93,7 @@ export class RequestAddEditComponent implements OnInit {
     console.log(this.currentRequest)
     //this.currentRequest.type_os = "Windows";
     this.currentRequest.payment_method = "none";
-    this.currentRequest.status = "pending";
+    this.currentRequest.status = "lopende";
     this.restApi.postLaptopRequest(this.currentRequest)
       .subscribe(response => {
         this.router.navigate(['/requests'], { relativeTo: this.route });

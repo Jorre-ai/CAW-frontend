@@ -54,6 +54,11 @@ export class ApiconfigService {
     );
   }
 
+  deleteLaptopRequest(id: number){
+    return this.http.delete(this.baseUrl + '/laptoprequest/' + id);
+
+  }
+
   // LAPTOPS
   getLaptops() {
     console.log(this.baseUrl + '/laptop');

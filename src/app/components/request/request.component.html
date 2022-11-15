@@ -32,7 +32,7 @@
                         <a routerLink="/requests/detail/{{request.id}}" class="btn btn-outline-secondary">Details</a>
                     </td> 
                     <td>
-                        <button class="btn btn-outline-secondary">Verwijder aanvraag
+                        <button class="btn btn-outline-secondary" (click)="onDeleteRequest(+request.id)">Verwijder aanvraag
                         </button>
                     </td>
                 </tr>

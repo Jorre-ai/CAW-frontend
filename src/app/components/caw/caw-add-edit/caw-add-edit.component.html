@@ -1,16 +1,16 @@
 
 <div class="container">
-    <h1 *ngIf="isAddMode">Add Caw</h1>
-    <h1 *ngIf="!isAddMode">Edit Caw</h1>
+    <h1 *ngIf="isAddMode">Voeg Caw deelwerking toe</h1>
+    <h1 *ngIf="!isAddMode">Bewerk Caw deelwerking</h1>
     <div class="jumbotron bg-light p-1">
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">
                 <div class="form-group">
-                    <label for="name" >Name</label>
+                    <label for="name" >Naam</label>
                     <input id="name" type="text"  formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors}">
                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                        <div *ngIf="f.name.errors.required">Name is required</div>
+                        <div *ngIf="f.name.errors.required">Naam is verplicht</div>
                     </div>
                 </div>
             </div>
@@ -21,17 +21,17 @@
                     <label for="email" >Email</label>
                     <input id="email" type="text"  formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.required">Email is verplicht</div>
                     </div>
                 </div>
             </div>
 
             <div class="form-row m-3">
                 <div class="form-group">
-                    <label for="phone" >Phone</label>
+                    <label for="phone" >Telefoon nummer</label>
                     <input id="phone" type="text"  formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors}">
                     <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                        <div *ngIf="f.phone.errors.required">Phone is required</div>
+                        <div *ngIf="f.phone.errors.required">Telefoon nummer is verplicht</div>
                     </div>
                 </div>
             </div>
@@ -39,9 +39,9 @@
             <div class="form-group m-3">
                 <button [disabled]="loading" class="btn btn-primary">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Save
+                    Opslaan
                 </button>
-                <a routerLink="/caw" class="btn btn-link">Cancel</a>
+                <a routerLink="/caw" class="btn btn-link">Terug</a>
             </div>
         </form>
     </div>
