@@ -25,9 +25,6 @@ export class RequestComponent implements OnInit{
         if (request.status == "lopende"){
           this.pendingRequests.push(request)
         }
-        if (request.status == "goedgekeurd"){
-          this.approvedRequests.push(request)
-        }
       }
       return requests}
       ))
@@ -45,6 +42,20 @@ export class RequestComponent implements OnInit{
       console.log(response);
     });
     window.location.reload()
+  }
+
+  sortTypedRequests(type: string){
+    this.restApi.getLaptopRequests()
+    .pipe(map(requests => {
+      this.pendingRequests.splice(0, this.pendingRequests.length)
+      for(let request of requests){
+        if (request.type_os == type && request.status == "lopende"){
+          this.pendingRequests.push(request)
+        }
+      }
+      return requests}
+      ))
+    .subscribe()
   }
 }
 

@@ -1,14 +1,16 @@
-<div class="container">
-    <h2>Details {{currentCaw.name}}</h2>
+<p>approved-requests works not!</p>
 
+
+<div class="container">
+    <h2>Goedgekeurde Aanvragen</h2>
     <div class="jumbotron bg-light p-1">
-        <h1 *ngIf="allRequests.length == 0">
-            Deze Deelwerking heeft nog geen laptops besteld
-        </h1>
-        <table *ngIf="allRequests.length > 0" class="table table-striped text-dark">
+        <a routerLink="/requests" class="btn btn-outline-secondary">Terug naar lopende Aanvragen</a>
+        <hr>
+
+        <table class="table table-striped text-dark">
             <thead>
                 <tr>
-                    <th style="width: 20%;">Email</th>
+                    <th style="width: 20%;">Naam</th>
                     <th style="width: 20%;">Beschrijving</th>
                     <th style="width: 10%;">Aantal</th>
                     <th style="width: 10%;">Besturingssysteem</th>
@@ -18,26 +20,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let request of allRequests">
+                <tr *ngFor="let request of approvedRequests">
                     <td>{{request.email}}</td>
                     <td>{{request.description}}</td>
                     <td>{{request.count}}</td>
                     <td>{{request.type_os}}</td>
                     <td>{{request.status}}</td>
-                    <!-- <td>
-                        <a routerLink="/requests/edit/{{request.id}}" class="btn btn-outline-secondary">Edit</a>
-                    </td> -->
+                    <!-- <td></td> -->
                     <td>
                         <a routerLink="/requests/detail/{{request.id}}" class="btn btn-outline-secondary">Details</a>
                     </td> 
-                    
                 </tr>
             </tbody>
-
+    
         </table>
-
-        <button routerLink="/caw" class="btn btn-link">Terug</button>
     </div>
-
-
 </div>

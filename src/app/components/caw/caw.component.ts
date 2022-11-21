@@ -11,6 +11,7 @@ import { first, map } from 'rxjs';
 })
 export class CawComponent implements OnInit {
   allCaws: Caw[] = [];
+  
 
   constructor(public restApi: ApiconfigService) { 
   }

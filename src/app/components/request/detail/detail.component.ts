@@ -64,7 +64,7 @@ export class DetailComponent implements OnInit {
       .subscribe();
 
       this.restApi.getLaptopsByRequestId(this.id)
-      .pipe(map(requests =>{
+      .pipe(map(requests => {
         this.requestLaptops = requests
       })).subscribe()
 
@@ -75,6 +75,13 @@ export class DetailComponent implements OnInit {
         for(let request of requests){
           if (+request.id == this.id){
             this.currentRequest = request
+            this.restApi.getCawById(+this.currentRequest.caw_id)
+            .pipe(map(caw =>{
+              this.currentCaw = caw
+              console.log(this.currentCaw)
+            })).subscribe()
+            
+
           }
         }
         this.allRequests = requests

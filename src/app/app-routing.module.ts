@@ -10,6 +10,7 @@ import { CawComponent } from './components/caw/caw.component';
 import { RequestAddEditComponent } from './components/request/request-add-edit/request-add-edit.component';
 import { CawAddEditComponent } from './components/caw/caw-add-edit/caw-add-edit.component';
 import { CawDetailComponent } from './components/caw/caw-detail/caw-detail.component';
+import { ApprovedRequestsComponent } from './components/request/approved-requests/approved-requests.component';
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'requests/add', component: RequestAddEditComponent},
   { path: 'requests/detail/:id', component: DetailComponent},
   { path: 'requests/edit/:id', component: RequestAddEditComponent},
+  { path: 'requests/approved-requests', component: ApprovedRequestsComponent},
 
   // caw routing
   { path: 'caw', component: CawComponent},
