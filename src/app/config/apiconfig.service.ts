@@ -38,6 +38,13 @@ export class ApiconfigService {
 
   }
 
+  getLaptopRequestByCawId(id: number){
+    return this.http.get<LaptopRequest[]>(
+      this.baseUrl + '/laptoprequest/caw/' + id,
+      this.httpOptions
+    )
+  }
+
   postLaptopRequest(laptopRequest: LaptopRequest) {
     return this.http.post(
       this.baseUrl + '/laptoprequest',

@@ -17,7 +17,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let caw of allCaws">
-                    <td>{{caw.name}}</td>
+                    <td>
+                        <a routerLink="/caw/detail/{{caw.id}}" class="link-primary">{{caw.name}}</a>
+                    </td>
                     <td>{{caw.email}}</td>
                     <td>{{caw.phone}}</td>
                     <td>

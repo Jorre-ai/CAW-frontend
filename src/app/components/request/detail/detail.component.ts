@@ -63,8 +63,6 @@ export class DetailComponent implements OnInit {
       ))
       .subscribe();
 
-      this.id = this.route.snapshot.params['id'];
-
       this.restApi.getLaptopsByRequestId(this.id)
       .pipe(map(requests =>{
         this.requestLaptops = requests
