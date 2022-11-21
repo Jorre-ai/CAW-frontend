@@ -17,6 +17,7 @@ const routes: Routes = [
 
   // add your routes here
   { path: '', component: RequestFormComponent},
+  { path: 'request/succes', component: SuccesComponent},
 
   // laptop routing
 

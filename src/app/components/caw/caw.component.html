@@ -9,8 +9,9 @@
                     <th style="width: 30%;">Deelwerking</th>
                     <th style="width: 20%;">E-mail</th>
                     <th style="width: 20%;">Telefoon</th>
-                    <th style="width: 15%;">Bewerk</th>
-                    <th style="width: 15%;">Verwijder</th>
+                    <th style="width: 10%;">Details</th>
+                    <th style="width: 10%;">Bewerk</th>
+                    <th style="width: 10%;">Verwijder</th>
 
                 </tr>
 
@@ -22,6 +23,9 @@
                     </td>
                     <td>{{caw.email}}</td>
                     <td>{{caw.phone}}</td>
+                    <td>
+                        <a routerLink="/caw/detail/{{caw.id}}" class="btn btn-outline-secondary">Details</a>
+                    </td>
                     <td>
                         <a routerLink="/caw/edit/{{caw.id}}" class="btn btn-outline-secondary">Bewerk</a>
                     </td>
