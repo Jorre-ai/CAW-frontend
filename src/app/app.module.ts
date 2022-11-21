@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from './_components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +16,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { RequestFormComponent } from './components/request-form/request-form.component';
-import { StockFormComponent } from './components/stock-form/stock-form.component';
 import { LaptopComponent } from './components/laptop/laptop.component';
 import { SuccesComponent } from './components/request-form/succes/succes.component';
 import { LaptopAddEditComponent } from './components/laptop/laptop-add-edit/laptop-add-edit.component';
@@ -31,15 +29,11 @@ import { CawDetailComponent } from './components/caw/caw-detail/caw-detail.compo
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     AlertComponent,
-    HomeComponent,
     RequestFormComponent,
-    StockFormComponent,
     LaptopComponent,
     SuccesComponent,
     LaptopAddEditComponent,
