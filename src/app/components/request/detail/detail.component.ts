@@ -66,6 +66,7 @@ export class DetailComponent implements OnInit {
       this.restApi.getLaptopsByRequestId(this.id)
       .pipe(map(requests => {
         this.requestLaptops = requests
+        console.log(this.requestLaptops)
       })).subscribe()
 
 
@@ -122,7 +123,7 @@ export class DetailComponent implements OnInit {
           "soldDate": "2022-11-03T10:47:10.958Z",
           "request_id": +this.id,
         }      
-        console.log(this.currentLaptop)  
+        console.log("CURRENT_LAPTOP", this.currentLaptop)  
       }
     }
     this.restApi.updateLaptop(this.currentLaptop).subscribe(result => console.log("this is the result",result))
@@ -133,7 +134,16 @@ export class DetailComponent implements OnInit {
   }
 
   onRemoveLaptop(id: number){
-    this.ngOnInit();
+    this.requestLaptops.forEach((laptop, index) => {
+      if (laptop.id == id){
+        console.log(laptop)
+        laptop.request_id = 0
+        laptop.status = "available"
+        laptop.soldDate = "2022-11-23T08:51:27.511Z"
+        this.restApi.updateLaptop(laptop).subscribe()
+      }
+    }) 
+    window.location.reload()
   }
 
   approveRequest(id: number){

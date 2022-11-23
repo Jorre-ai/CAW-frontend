@@ -7,6 +7,7 @@ export class Laptop {
   isPaid: boolean;
   isFree: boolean;
   request_id: number;
+  soldDate: string;
 }
 
 export class LaptopCreate {

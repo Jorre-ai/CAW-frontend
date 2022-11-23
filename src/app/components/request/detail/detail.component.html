@@ -18,9 +18,6 @@
                 <hr>
                 
                 
-                
-                
-
                 <form *ngIf="requestLaptops.length < request.count" action="" class="row m-2 form-group" [formGroup]="form" (ngSubmit)="onAddLaptop()">
                     <div class="row">
                         <div *ngIf="request.type_os == 'Linux'" class="col-8">
