@@ -1,8 +1,9 @@
 
 <div class="container">
-    <h1 *ngIf="isAddMode">Voeg Caw deelwerking toe</h1>
-    <h1 *ngIf="!isAddMode">Bewerk Caw deelwerking</h1>
-    <div class="jumbotron bg-light p-1">
+    <div class="jumbotron bg-light p-1 mt-2">
+        <h1 *ngIf="isAddMode">Voeg Caw deelwerking toe</h1>
+        <h1 *ngIf="!isAddMode">Bewerk Caw deelwerking</h1>
+
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">

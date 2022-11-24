@@ -19,3 +19,21 @@ a { cursor: pointer }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.example-container {
+    position: relative;
+    min-height: 100hv;
+    display: inline !important;
+}
+
+.content-wrapper {
+    padding-bottom: 1rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1rem
+}

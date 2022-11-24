@@ -1,44 +1,40 @@
 
 <mat-drawer-container class="example-container"  autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-
-    <img class="m-2" src="../assets/logos/caw-blauwfuchsia-rgb@2x.png" alt="" height="50px">
-
-<ul class="list-group">
-  <li class="list-group-item list-group-item-action">
-    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Laptops Aanvragen</a>
-  </li>
-
-  <li class="list-group-item list-group-item-action">
-    <a class="nav-item nav-link" routerLink="/laptops" routerLinkActive="active">Laptops</a>
-  </li>
-  <li class="list-group-item list-group-item-action">
-    <a class="nav-item nav-link" routerLink="/requests" routerLinkActive="active">Aanvragen</a>
-  </li>
-  <li class="list-group-item list-group-item-action">
-    <a class="nav-item nav-link" routerLink="/caw" routerLinkActive="active">Caw</a>
-  </li>
-
-</ul>
 
 
-  </mat-drawer>
+  <div class="content-wrapper">
+    <nav class="navbar navbar-expand-md navbar-light bg-light p-2">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="example-sidenav-content">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Laptops Aanvragen</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/laptops" routerLinkActive="active">Laptops</a>
+          </li>
+          <li class="">
+            <a class="nav-link" routerLink="/requests" routerLinkActive="active">Aanvragen</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/caw" routerLinkActive="active">Caw</a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
     
 
-    
-
-    <div class="header pt-5 pb-5">
+    <div class="header pt-5 p-5">
+      
       
     
       <!-- main app container -->
       <div class="app-container" [ngClass]="{ 'bg-light': user }">
-        <button type="button" class="btn nav-button p-2" style="border: none; background-color: none;" mat-button (click)="drawer.toggle()">
-          <!--CAW-antwerp small logo placeholder-->
-          NAV	&#60;
-          
-        </button>
         <a href="/" class="p-2">
           <img src="../assets/logos/caw-witfuchsia-rgb@2x.png" alt="" height="50px">
         </a>
@@ -51,14 +47,16 @@
       <!--Header ends-->
 
   </div>
+  <div class="content flex footer mt-2">
+    <footer>
+      <img src="../assets/logos/caw-blauwfuchsia-rgb@2x.png" mb-2 height="20px">
+      <p class="m-2">Copyright &copy; Caw Antwerpen</p>
+    </footer>
+    
+  </div>
+
+  
 
 </mat-drawer-container>
 
-<div class="content flex">
-  <p>footnote (rechten aan ... )</p>
 
-  
-  <p>
-    <a href="#" target="_blank">nog een coole footer link ofzo</a>
-</p>
-</div>

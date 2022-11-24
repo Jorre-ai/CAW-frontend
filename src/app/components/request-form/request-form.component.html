@@ -1,9 +1,11 @@
 
 <div class="container">
-    <h1 *ngIf="isAddMode">Aanvraag toevoegen</h1>
-    <h1 *ngIf="!isAddMode">Aanvraag bewerken</h1>
 
-    <div class="jumbotron bg-light p-1">
+
+    <div class="jumbotron bg-light p-1 mt-2">
+        <h1 *ngIf="isAddMode">Aanvraag toevoegen</h1>
+        <h1 *ngIf="!isAddMode">Aanvraag bewerken</h1>
+        <hr>
 <!--         <div *ngFor="let request of allRequests">
             <div *ngIf="request.id == this.id">
                 <p>Requester</p>
