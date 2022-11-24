@@ -8,7 +8,7 @@
             <button (click)="sortPaidLaptops(false)" class="btn btn-outline-secondary m-1">Onbetaalde laptops</button>
             <button (click)="ngOnInit()" class="btn btn-outline-secondary m-1">Alle laptops</button>
             <button (click)="allTypedLaptops('Linux')" class="btn btn-outline-secondary m-1">Linux laptops</button>
-            <button (click)="allTypedLaptops('Windows')" class="btn btn-outline-secondary m-1">All windows laptops</button>    
+            <button (click)="allTypedLaptops('Windows')" class="btn btn-outline-secondary m-1">All windows laptops</button>
         </div>
         <hr>
         <h1>Alle laptops</h1>
@@ -18,8 +18,7 @@
         <table class="table table-striped  text-dark">
             <thead>
                 <tr>
-                    <th style="width: 5%">ID</th>
-                    <th style="width: 35%">Naam</th>
+                    <th style="width: 40%">Naam</th>
                     <th style="width: 10%">Besturingssysteem</th>
                     <th style="width: 10%">Prijs</th>
                     <th style="width: 10%">Betaald</th>
@@ -29,9 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                
                     <tr *ngFor="let laptop of allLaptops">
-                        <td>{{laptop.id}}</td>
                         <td>{{laptop.name}}</td>
                         <td>{{laptop.type}}</td>
                         <td>{{laptop.price}} euro</td>

@@ -8,6 +8,8 @@ export class Laptop {
   isFree: boolean;
   request_id: number;
   soldDate: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export class LaptopCreate {
