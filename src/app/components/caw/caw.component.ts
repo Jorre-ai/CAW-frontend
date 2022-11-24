@@ -42,7 +42,4 @@ export class CawComponent implements OnInit {
       this.ngOnInit();
     })
   }
-
-
-
 }

@@ -95,24 +95,5 @@ export class LaptopComponent implements OnInit {
     .subscribe();
   }
 
-  allorderedondate(){
-    this.restApi
-    .getLaptops()
-    .pipe(map(laptops => {
-      this.allLaptops = laptops
-      this.allLaptops.sort((a, b) => {
-        let fa = a.created_at,
-        fb = b.created_at
-        if (fa < fb){
-          return -1
-        }
-        if (fa > fb){
-          return 1
-        }
-        return 0
-      })
-      console.log(this.allLaptops)
-    })).subscribe();
-
-  }
+  
 }
