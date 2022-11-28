@@ -11,6 +11,8 @@ import { RequestAddEditComponent } from './components/request/request-add-edit/r
 import { CawAddEditComponent } from './components/caw/caw-add-edit/caw-add-edit.component';
 import { CawDetailComponent } from './components/caw/caw-detail/caw-detail.component';
 import { ApprovedRequestsComponent } from './components/request/approved-requests/approved-requests.component';
+import { LaptopRequest } from './_models/laptoprequest';
+import { LinkedLaptopsComponent } from './components/laptop/linked-laptops/linked-laptops.component';
 
 
 
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'laptops', component: LaptopComponent},
   { path: 'laptops/add', component: LaptopAddEditComponent},
   { path: 'laptops/edit/:id', component: LaptopAddEditComponent},
+  { path: 'laptops/payed/:id', component: LaptopAddEditComponent},
+  { path: 'laptops/linked-laptops', component: LinkedLaptopsComponent},
 
   // request routing
   { path: 'requests', component: RequestComponent},

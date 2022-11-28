@@ -62,7 +62,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let laptop of requestLaptops">
-                            <td>{{laptop.name}}</td>
+                            <td>
+                                <a routerLink="/laptops/edit/{{laptop.id}}">{{laptop.name}}</a>
+                            </td>
                             <td>{{laptop.type}}</td>
                             <td>{{laptop.price}} euro</td>
                             <td *ngIf="request.status != 'goedgekeurd'">

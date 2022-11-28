@@ -27,6 +27,7 @@ import { RequestAddEditComponent } from './components/request/request-add-edit/r
 import { CawAddEditComponent } from './components/caw/caw-add-edit/caw-add-edit.component';
 import { CawDetailComponent } from './components/caw/caw-detail/caw-detail.component';
 import { ApprovedRequestsComponent } from './components/request/approved-requests/approved-requests.component';
+import { LinkedLaptopsComponent } from './components/laptop/linked-laptops/linked-laptops.component';
 
 
 
@@ -44,7 +45,8 @@ import { ApprovedRequestsComponent } from './components/request/approved-request
     RequestAddEditComponent,
     CawAddEditComponent,
     CawDetailComponent,
-    ApprovedRequestsComponent
+    ApprovedRequestsComponent,
+    LinkedLaptopsComponent
   ],
   imports: [
     BrowserModule,

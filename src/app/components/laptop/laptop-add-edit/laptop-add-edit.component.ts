@@ -15,6 +15,8 @@ import { LaptopCreate } from 'src/app/_models/laptop';
 export class LaptopAddEditComponent implements OnInit {
   form!: FormGroup;
   id!: number;
+  source: string;
+  fromRequest = false;
   isAddMode!: boolean;
   loading = false;
   submitted = false;
@@ -34,6 +36,13 @@ export class LaptopAddEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    console.log(this.route.snapshot.routeConfig.path)
+    this.source = this.route.snapshot.routeConfig.path
+    if (this.source.includes('payed')){
+      this.fromRequest = true
+    }
+
+
     this.isAddMode = !this.id;
 
 

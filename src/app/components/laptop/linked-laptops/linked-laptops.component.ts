@@ -1,67 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { ApiconfigService } from 'src/app/config/apiconfig.service';
 import { Laptop } from 'src/app/_models/laptop';
-import { first, map } from 'rxjs';
 
 @Component({
-  selector: 'app-laptop',
-  templateUrl: './laptop.component.html',
-  styleUrls: ['./laptop.component.css'],
+  selector: 'app-linked-laptops',
+  templateUrl: './linked-laptops.component.html',
+  styleUrls: ['./linked-laptops.component.css']
 })
-export class LaptopComponent implements OnInit {
+export class LinkedLaptopsComponent implements OnInit {
   allLaptops: Laptop[] = [];
-  sorting: string;
-  freeLaptops: Laptop[] = []
+  linkedLaptops: Laptop[] = [];
 
-  constructor(public restApi: ApiconfigService) {}
+  constructor(public restApi: ApiconfigService) { }
 
   ngOnInit(): void {
-
     this.restApi.getLaptops()
     .pipe(map(laptops => {
       this.allLaptops = laptops
       
       for (let index in this.allLaptops){
   
-        if (this.allLaptops[index].status == "available"){
+        if (this.allLaptops[index].status == "away"){
           console.log(this.allLaptops[index])
-          this.freeLaptops.push(this.allLaptops[index])
+          this.linkedLaptops.push(this.allLaptops[index])
         }
       }
-      this.freeLaptops.sort((a, b) => {
-        let fa = a.created_at,
-        fb = b.created_at
-        if (fa < fb){
-          return 1
-        }
-        if (fa > fb){
-          return -1
-        }
-        return 0
-      })
     })).subscribe()
 
-
-    this.restApi
-      .getLaptops()
-      .pipe(map(laptops => {
-
-        this.allLaptops = laptops
-        this.allLaptops.sort((a, b) => {
-          let fa = a.created_at,
-          fb = b.created_at
-          if (fa < fb){
-            return 1
-          }
-          if (fa > fb){
-            return -1
-          }
-          return 0
-        })
-        console.log(this.allLaptops)
-      })).subscribe();
   }
-
   onDeleteLaptop(id: number) {
     this.restApi.deleteLaptop(id).subscribe((response) => {
       console.log(response);
@@ -123,5 +90,4 @@ export class LaptopComponent implements OnInit {
     .subscribe();
   }
 
-  
 }

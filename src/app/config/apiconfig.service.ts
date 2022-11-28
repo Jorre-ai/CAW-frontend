@@ -68,8 +68,10 @@ export class ApiconfigService {
 
   // LAPTOPS
   getLaptops() {
-    console.log(this.baseUrl + '/laptop');
-    return this.http.get<Laptop[]>(this.baseUrl + '/laptop');
+    return this.http.get<Laptop[]>(
+      this.baseUrl + '/laptop',
+      this.httpOptions
+      );
   }
 
   getLaptopById(id: number) {
