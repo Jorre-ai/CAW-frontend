@@ -19,20 +19,34 @@ export class RequestComponent implements OnInit{
 
 
   constructor(public restApi: ApiconfigService) { 
+
+  }
+
+  ngOnInit(): void {
     this.restApi.getLaptopRequests()
     .pipe(map(requests => {
+      this.pendingRequests.splice(0, this.pendingRequests.length)
       for(let request of requests){
         if (request.status == "lopende"){
           this.pendingRequests.push(request)
         }
       }
+      this.pendingRequests.sort((a, b) =>{
+        let fa = a.created_at,
+        fb = b.created_at
+        if (fa < fb){
+          return 1
+        }
+        if (fa > fb){
+          return -1
+        }
+        return 0
+      })
+
       return requests}
       ))
     .subscribe()
     this.restApi.getCaws().pipe(first()).subscribe((caws) => (this.allCaws = caws))
-  }
-
-  ngOnInit(): void {
     console.log("alle approved requests" , this.approvedRequests)
     console.log("alle pending requests", this.pendingRequests)
   }

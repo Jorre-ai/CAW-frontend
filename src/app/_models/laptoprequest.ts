@@ -7,6 +7,8 @@ export class LaptopRequest {
     description: string;
     status: string;
     caw_id: BigInteger;
+    created_at: string;
+    updated_at : string
 }
 
 export class LaptopRequestCreate {

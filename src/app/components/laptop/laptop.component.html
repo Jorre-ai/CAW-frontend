@@ -2,17 +2,45 @@
 
     <div class="jumbotron bg-light p-1 mt-2">
 
-        <a routerLink="/laptops/add" class="btn btn-outline-secondary">Voeg laptop toe</a>
-        <div class="">
-            <button (click)="sortPaidLaptops(true)" class="btn btn-outline-secondary m-1">Betaalde laptops</button>
-            <button (click)="sortPaidLaptops(false)" class="btn btn-outline-secondary m-1">Onbetaalde laptops</button>
-            <button (click)="ngOnInit()" class="btn btn-outline-secondary m-1">Alle laptops</button>
-            <button (click)="allTypedLaptops('Linux')" class="btn btn-outline-secondary m-1">Linux laptops</button>
-            <button (click)="allTypedLaptops('Windows')" class="btn btn-outline-secondary m-1">All windows laptops</button>
-        </div>
+        <a routerLink="/laptops/add" class="btn btn-outline-dark">Voeg laptop toe</a>
         <hr>
         <h1>Alle laptops</h1>
+        <div class="row">
+            <div class="col-5">
+                Filter op betaald status
+            </div>
+            <div class="col-2">
+                Reset filter
+            </div>
+            <div class="col-5">
+                Filter op Besturingssysteem
+            </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-5">
+                <button (click)="sortPaidLaptops(true)" class="btn btn-outline-secondary m-1">Betaalde</button>
+
+                <button (click)="sortPaidLaptops(false)" class="btn btn-outline-secondary m-1">Onbetaalde</button>
+            </div>
+            <div class="col-2">
+                <button (click)="ngOnInit()" class="btn btn-outline-secondary m-1">Alle laptops</button>
+
+            </div>
+            <div class="col-5">
+                <button (click)="allTypedLaptops('Linux')" class="btn btn-outline-secondary m-1">Linux</button>
+
+                <button (click)="allTypedLaptops('Windows')" class="btn btn-outline-secondary m-1">Windows</button>
+            </div>
+            
+
+
+
+
+
+
+        </div>
 
         
         <table class="table table-striped  text-dark">
@@ -43,10 +71,10 @@
                             Gratis
                         </td>
                         <td>
-                            <a routerLink="/laptops/edit/{{laptop.id}}" class="btn btn-outline-secondary">Bewerk</a>
+                            <a routerLink="/laptops/edit/{{laptop.id}}" class="btn btn-outline-dark">Bewerk</a>
                         </td>
                         <td>
-                            <button (click)="onDeleteLaptop(laptop.id)" class="btn btn-outline-secondary">Verwijder
+                            <button (click)="onDeleteLaptop(laptop.id)" class="btn btn-outline-danger">Verwijder
                             </button>
                         </td>
                     </tr>

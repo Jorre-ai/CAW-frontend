@@ -1,6 +1,6 @@
 <div class="container">
     <div class="jumbotron bg-light p-1 mt-2">
-        <a routerLink="/caw/add" class="btn btn-outline-secondary">Voeg deelwerking toe</a>
+        <a routerLink="/caw/add" class="btn btn-outline-dark">Voeg deelwerking toe</a>
         <hr>
         <h1>Alle Caw deelwerkingen</h1>
 
@@ -20,19 +20,17 @@
             </thead>
             <tbody>
                 <tr *ngFor="let caw of allCaws">
-                    <td>
-                        <a routerLink="/caw/detail/{{caw.id}}" class="link-primary">{{caw.name}}</a>
-                    </td>
+                    <td>{{caw.name}}</td>
                     <td>{{caw.email}}</td>
                     <td>{{caw.phone}}</td>
                     <td>
-                        <a routerLink="/caw/detail/{{caw.id}}" class="btn btn-outline-secondary">Details</a>
+                        <a routerLink="/caw/detail/{{caw.id}}" class="btn btn-outline-dark">Details</a>
                     </td>
                     <td>
-                        <a routerLink="/caw/edit/{{caw.id}}" class="btn btn-outline-secondary">Bewerk</a>
+                        <a routerLink="/caw/edit/{{caw.id}}" class="btn btn-outline-dark">Bewerk</a>
                     </td>
                     <td>
-                        <button (click)="onDeleteCaw(caw.id)" class="btn btn-outline-secondary">Verwijder</button>
+                        <button (click)="onDeleteCaw(caw.id)" class="btn btn-outline-danger">Verwijder</button>
                     </td>
                 </tr>
             </tbody>
