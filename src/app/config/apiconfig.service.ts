@@ -11,7 +11,7 @@ import { Caw } from '../_models/caw';
   providedIn: 'root',
 })
 export class ApiconfigService {
-  private baseUrl: string = 'http://localhost:8000';
+  private baseUrl: string = 'http://localhost:8000/api';
   allLaptops: Laptop[] = null;
 
   constructor(private http: HttpClient) {}
