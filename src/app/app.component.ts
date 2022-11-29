@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AccountService } from './_services';
 import { User } from './_models';
 
 
@@ -13,12 +12,8 @@ export class AppComponent {
     showFiller = true;
     user: User;
 
-    constructor(private accountService: AccountService) {
-        this.accountService.user.subscribe(x => this.user = x);
+    constructor() {
         
     }
 
-    logout() {
-        this.accountService.logout();
-    }
 }
