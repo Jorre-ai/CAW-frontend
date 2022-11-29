@@ -1,8 +1,20 @@
 <div class="container">
 
     <div class="jumbotron bg-light p-1 mt-2">
-        <h1 *ngIf="isAddMode">Add Laptop</h1>
-        <h1 *ngIf="!isAddMode">Edit Laptop</h1>
+        <div class="row">
+            <span class="col-2"></span>
+            <div class="col-8">
+                <h1 *ngIf="isAddMode">Add Laptop</h1>
+                <h1 *ngIf="!isAddMode">Edit Laptop</h1>
+            </div>
+            <div class="col-2">
+                <a *ngIf="currentLaptop.request_id != null" class="btn btn-outline-dark" routerLink="/requests/detail/{{currentLaptop.request_id}}">Naar gelinkte aanvraag</a>
+    
+            </div>
+        </div>
+        
+
+
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">
@@ -19,14 +31,14 @@
             </div>
             
             <div class="m-3 col">
-                <div class="row">
+                <div class="row" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
                     <span class="col-4"></span>
                     <span class="col-2">
-                        <input type="radio" id="Windows" class="btn-check" formControlName="type" value="Windows" style="display: none" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                        <input type="radio" id="Windows" class="btn-check" formControlName="type" value="Windows" style="display: none">
                         <label for="Windows" class="btn btn-outline-secondary">Windows</label>
                     </span>
                     <span class="col-2">
-                        <input type="radio" id="Linux" class="btn-check" formControlName="type"  value="Linux" style="display: none" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                        <input type="radio" id="Linux" class="btn-check" formControlName="type"  value="Linux" style="display: none">
                         <label for="Linux" class="btn btn-outline-secondary">Linux</label>
                     </span>
                 </div>
@@ -56,8 +68,11 @@
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Save
                 </button>
-                <a routerLink="/laptops" class="btn btn-link">Terug</a>
+                <a *ngIf="currentLaptop.request_id == null" routerLink="/laptops" class="btn btn-link">Terug</a>
+                <a *ngIf="currentLaptop.request_id != null" routerLink="/laptops/linked-laptops" class="btn btn-link">Terug</a>
+
             </div>
+
         </form>
     </div>
 </div>

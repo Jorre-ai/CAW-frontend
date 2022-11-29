@@ -78,6 +78,7 @@ export class LaptopAddEditComponent implements OnInit {
         .getLaptopById(this.id)
         .pipe(first())
         .subscribe((response) => {
+          this.currentLaptop = response
           this.form.patchValue(response);
           console.log(response)
         });

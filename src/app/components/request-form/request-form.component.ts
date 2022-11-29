@@ -57,9 +57,7 @@ export class RequestFormComponent implements OnInit {
       ]],
       count: ['', Validators.required],
       type_os: ['', Validators.required],
-      //payment_method: ['', Validators.required],
       description: [''],
-      //status: ['', Validators.required],
       caw_id: ['', Validators.required],
     })
   }
@@ -73,8 +71,11 @@ export class RequestFormComponent implements OnInit {
     this.alertService.clear();
 
     if (this.form.invalid){
-      console.log('unvalid form')
-      return
+      console.log('Invalid form');
+      console.log(this.f.email.errors)
+      console.log(this.submitted)
+      console.log(this.f.email.errors.required)
+      return;
     }
 
     this.currentRequest = this.form.value;

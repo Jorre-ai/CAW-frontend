@@ -19,13 +19,10 @@ export class LaptopComponent implements OnInit {
 
     this.restApi.getLaptops()
     .pipe(map(laptops => {
-      this.allLaptops = laptops
-      
-      for (let index in this.allLaptops){
-  
-        if (this.allLaptops[index].status == "available"){
-          console.log(this.allLaptops[index])
-          this.freeLaptops.push(this.allLaptops[index])
+      this.freeLaptops.splice(0, this.freeLaptops.length)
+      for (let index in laptops){
+        if(laptops[index].status == "available"){
+          this.freeLaptops.push(laptops[index])
         }
       }
       this.freeLaptops.sort((a, b) => {
@@ -42,24 +39,7 @@ export class LaptopComponent implements OnInit {
     })).subscribe()
 
 
-    this.restApi
-      .getLaptops()
-      .pipe(map(laptops => {
 
-        this.allLaptops = laptops
-        this.allLaptops.sort((a, b) => {
-          let fa = a.created_at,
-          fb = b.created_at
-          if (fa < fb){
-            return 1
-          }
-          if (fa > fb){
-            return -1
-          }
-          return 0
-        })
-        console.log(this.allLaptops)
-      })).subscribe();
   }
 
   onDeleteLaptop(id: number) {
@@ -70,17 +50,15 @@ export class LaptopComponent implements OnInit {
   }
 
   sortPaidLaptops(isPaid: boolean){
-    this.restApi
-    .getLaptops()
+    this.restApi.getLaptops()
     .pipe(map(laptops => {
-      this.allLaptops.splice(0, this.allLaptops.length)
-      for(let laptop of laptops){
-        if (laptop.isPaid == isPaid){
-          console.log(laptop)
-          this.allLaptops.push(laptop)
+      this.freeLaptops.splice(0, this.freeLaptops.length)
+      for (let index in laptops){
+        if(laptops[index].status == "available" && laptops[index].isPaid == isPaid){
+          this.freeLaptops.push(laptops[index])
         }
       }
-      this.allLaptops.sort((a, b) => {
+      this.freeLaptops.sort((a, b) => {
         let fa = a.created_at,
         fb = b.created_at
         if (fa < fb){
@@ -91,23 +69,19 @@ export class LaptopComponent implements OnInit {
         }
         return 0
       })
-      return laptops
-    }))
-    .subscribe();
+    })).subscribe()
   }
 
   allTypedLaptops(type: string){
-    this.restApi
-    .getLaptops()
+    this.restApi.getLaptops()
     .pipe(map(laptops => {
-      this.allLaptops.splice(0, this.allLaptops.length)
-      for(let laptop of laptops){
-        if (laptop.type == type){
-          console.log(laptop)
-          this.allLaptops.push(laptop)
+      this.freeLaptops.splice(0, this.freeLaptops.length)
+      for (let index in laptops){
+        if(laptops[index].status == "available" && laptops[index].type == type){
+          this.freeLaptops.push(laptops[index])
         }
       }
-      this.allLaptops.sort((a, b) => {
+      this.freeLaptops.sort((a, b) => {
         let fa = a.created_at,
         fb = b.created_at
         if (fa < fb){
@@ -118,9 +92,9 @@ export class LaptopComponent implements OnInit {
         }
         return 0
       })
-      return laptops
-    }))
-    .subscribe();
+    })).subscribe()
+
+
   }
 
   

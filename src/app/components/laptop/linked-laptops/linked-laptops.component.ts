@@ -17,17 +17,24 @@ export class LinkedLaptopsComponent implements OnInit {
   ngOnInit(): void {
     this.restApi.getLaptops()
     .pipe(map(laptops => {
-      this.allLaptops = laptops
-      
-      for (let index in this.allLaptops){
-  
-        if (this.allLaptops[index].status == "away"){
-          console.log(this.allLaptops[index])
-          this.linkedLaptops.push(this.allLaptops[index])
+      this.linkedLaptops.splice(0, this.linkedLaptops.length)
+      for (let index in laptops){
+        if(laptops[index].status == "away"){
+          this.linkedLaptops.push(laptops[index])
         }
       }
+      this.linkedLaptops.sort((a, b) => {
+        let fa = a.created_at,
+        fb = b.created_at
+        if (fa < fb){
+          return 1
+        }
+        if (fa > fb){
+          return -1
+        }
+        return 0
+      })
     })).subscribe()
-
   }
   onDeleteLaptop(id: number) {
     this.restApi.deleteLaptop(id).subscribe((response) => {
@@ -37,17 +44,15 @@ export class LinkedLaptopsComponent implements OnInit {
   }
 
   sortPaidLaptops(isPaid: boolean){
-    this.restApi
-    .getLaptops()
+    this.restApi.getLaptops()
     .pipe(map(laptops => {
-      this.allLaptops.splice(0, this.allLaptops.length)
-      for(let laptop of laptops){
-        if (laptop.isPaid == isPaid){
-          console.log(laptop)
-          this.allLaptops.push(laptop)
+      this.linkedLaptops.splice(0, this.linkedLaptops.length)
+      for (let index in laptops){
+        if(laptops[index].status == "away" && laptops[index].isPaid == isPaid){
+          this.linkedLaptops.push(laptops[index])
         }
       }
-      this.allLaptops.sort((a, b) => {
+      this.linkedLaptops.sort((a, b) => {
         let fa = a.created_at,
         fb = b.created_at
         if (fa < fb){
@@ -58,23 +63,20 @@ export class LinkedLaptopsComponent implements OnInit {
         }
         return 0
       })
-      return laptops
-    }))
-    .subscribe();
+    })).subscribe()
+    
   }
 
   allTypedLaptops(type: string){
-    this.restApi
-    .getLaptops()
+    this.restApi.getLaptops()
     .pipe(map(laptops => {
-      this.allLaptops.splice(0, this.allLaptops.length)
-      for(let laptop of laptops){
-        if (laptop.type == type){
-          console.log(laptop)
-          this.allLaptops.push(laptop)
+      this.linkedLaptops.splice(0, this.linkedLaptops.length)
+      for (let index in laptops){
+        if(laptops[index].status == "away" && laptops[index].type == type){
+          this.linkedLaptops.push(laptops[index])
         }
       }
-      this.allLaptops.sort((a, b) => {
+      this.linkedLaptops.sort((a, b) => {
         let fa = a.created_at,
         fb = b.created_at
         if (fa < fb){
@@ -85,9 +87,7 @@ export class LinkedLaptopsComponent implements OnInit {
         }
         return 0
       })
-      return laptops
-    }))
-    .subscribe();
+    })).subscribe()
   }
 
 }

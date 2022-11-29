@@ -8,34 +8,47 @@
         <h1 *ngIf="!isAddMode">Edit Request</h1>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">
-                <div class="form-group">
+                <div class="form-group" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                     <label for="email">Email</label>
                     <input type="text" id="email" formControlName="email" class="form-control">
                 </div>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Het ingeven van een emailadres is verplicht</div>
+                    <div *ngIf="f.email.errors.email">Ingegeven veld moet een email adres zijn</div>
+                </div>
+            </div>
 
+            <div class="form-group m-3">
+                <label for="caw_id">Deelwerking CAW</label>
+                <select name="caw_id" id="caw_id" formControlName="caw_id"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.caw_id.errors}">
+                    <option *ngFor="let caw of allCaws" value="{{caw.id}}">{{caw.name}}</option>
+                </select>
+                <div *ngIf="submitted && f.caw_id.errors" class="invalid-feedback">
+                    <div *ngIf="f.caw_id.errors.required">Het selecteren van een deelwerking is verplicht</div>
+                </div>
             </div>
 
             <div class="form-group m-3">
                 <label for="count">Aantal Laptops</label>
-                <select name="count" id="count" formControlName="count" class="form-control">
+                <select name="count" id="count" formControlName="count" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.count.errors}">
                     <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" value="{{num}}">{{num}}</option>
                 </select>
+                <div *ngIf="submitted && f.count.errors" class="invalid-feedback">
+                    <div *ngIf="f.count.errors.required">Het ingeven van het aantal laptops is verplicht</div>
+                </div>
             </div>
 
-            <div class="m-3 col">
-                <!-- <div class="row " style="justify-content: center">
-                    <span class="col-4 mx-2">
-                        <input type="radio" id="Windows" class="btn-check" formControlName="type_os" value="Windows" style="display: none" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
-                        <label for="Windows" class="btn btn-outline-secondary">Windows</label>
-                    </span>
-                    <span class="col-4 mx-2">
-                        <input type="radio" id="Linux" class="btn-check" formControlName="type_os"  value="Linux" style="display: none" [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
-                        <label for="Linux" class="btn btn-outline-secondary">Linux</label>
-                    </span>
-                </div> -->
-<!--                 <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
-                    <div *ngIf="f.type.errors.required">Type is required</div>
-                </div> -->
+
+
+            <div class="form-row m-3">
+                <label for="type_os">Besturingssysteem</label>
+                <select formControlName="type_os" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type_os.errors}">
+                    <option>Linux</option>
+                    <option>Windows</option>
+                </select>
+                <div *ngIf="submitted && f.type_os.errors" class="invalid-feedback">
+                    <div *ngIf="f.type_os.errors.required">Het ingeven van het besturingssysteem van de laptops is verplicht</div>
+                </div>
             </div>
 
             <div class="form-row m-3">
@@ -43,22 +56,10 @@
                     <label for="description">Opmerkingen</label>
                     <input type="text" id="description" formControlName="description" class="form-control">
                 </div>
+                
             </div>
 
-            <div class="form-row m-3">
-                <label for="type_os">Besturingssysteem</label>
-                <select formControlName="type_os" class="form-control">
-                    <option>Linux</option>
-                    <option>Windows</option>
-                  </select>
-            </div>
 
-            <div class="form-group m-3">
-                <label for="caw_id">Deelwerking CAW</label>
-                <select name="caw_id" id="caw_id" formControlName="caw_id"  class="form-control">
-                    <option *ngFor="let caw of allCaws" value="{{caw.id}}">{{caw.name}}</option>
-                </select>
-            </div>
 
             
 

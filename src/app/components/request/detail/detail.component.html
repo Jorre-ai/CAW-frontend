@@ -8,7 +8,8 @@
                     <h2 class="col-6">Aangevraagde laptops: {{request.count}} {{request.type_os}} Laptops</h2>
                     <div class="col-6">
                         <div class="d-flex p-2 justify-content-center">
-                            Deelwerking: {{currentCaw.name}}
+                            
+                            <a routerLink="/caw/detail/{{currentCaw.id}}" class="btn btn-link">Deelwerking: {{currentCaw.name}}</a>
                         </div>
                         <div class="d-flex p-2 justify-content-center">
                             Extra info: {{request.description}}
@@ -46,9 +47,9 @@
                         </div>
                     </div>
                     
-                    
+                    <hr>
                 </form>
-                <hr>
+                
 
                 <table class="table table-striped  text-dark">
                     <thead>

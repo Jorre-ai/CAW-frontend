@@ -9,18 +9,14 @@
             Hier kan informatie komen om de medewerkers verder te helpen
         </p>
         <hr>
-<!--         <div *ngFor="let request of allRequests">
-            <div *ngIf="request.id == this.id">
-                <p>Requester</p>
-            </div>
-        </div> -->
+
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="form-row m-3">
                 <div class="form-group">
                     <label for="email">Contact e-mailadres</label>
-                    <input type="text" id="email" formControlName="email" class="form-control">
+                    <input type="text" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors}">
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">email is verplicht</div>
+                        <div *ngIf="f.email.errors.required">Het ingeven van een emailadres is verplicht</div>
                         <div *ngIf="f.email.errors.email">Ingegeven veld moet een email adres zijn</div>
                     </div>
                 </div>
@@ -28,24 +24,33 @@
 
             <div class="form-group m-3">
                 <label for="caw_id">Deelwerking CAW</label>
-                <select name="caw_id" id="caw_id" formControlName="caw_id"  class="form-control">
+                <select name="caw_id" id="caw_id" formControlName="caw_id"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.caw_id.errors}">
                     <option *ngFor="let caw of allCaws" value="{{caw.id}}">{{caw.name}}</option>
                 </select>
+                <div *ngIf="submitted && f.caw_id.errors" class="invalid-feedback">
+                    <div *ngIf="f.caw_id.errors.required">Het selecteren van een deelwerking is verplicht</div>
+                </div>
             </div>
 
             <div class="form-group m-3">
                 <label for="count">Aantal Laptops</label>
-                <select name="count" id="count" formControlName="count" class="form-control">
+                <select name="count" id="count" formControlName="count" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.count.errors}">
                     <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" value="{{num}}">{{num}}</option>
                 </select>
+                <div *ngIf="submitted && f.count.errors" class="invalid-feedback">
+                    <div *ngIf="f.count.errors.required">Het ingeven van het aantal laptops is verplicht</div>
+                </div>
             </div>
 
             <div class="form-row m-3">
                 <label for="type_os">Besturingssysteem van de laptops</label>
-                <select formControlName="type_os" class="form-control">
+                <select formControlName="type_os" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type_os.errors}">
                     <option value="Linux">Linux - &euro;30.00</option>
                     <option Value="Windows">Windows - &euro;50.00</option>
-                  </select>
+                </select>
+                <div *ngIf="submitted && f.type_os.errors" class="invalid-feedback">
+                    <div *ngIf="f.type_os.errors.required">Het ingeven van het besturingssysteem van de laptops is verplicht</div>
+                </div>
             </div>
 
             <div class="form-row m-3">
