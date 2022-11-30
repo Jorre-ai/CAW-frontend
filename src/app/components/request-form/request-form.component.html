@@ -5,9 +5,9 @@
     <div class="jumbotron bg-light p-1 mt-2">
         <h1 *ngIf="isAddMode">Vraag laptops aan</h1>
         <h1 *ngIf="!isAddMode">Aanvraag bewerken</h1>
-        <p>
+        <!-- <p>
             Hier kan informatie komen om de medewerkers verder te helpen
-        </p>
+        </p> -->
         <hr>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
