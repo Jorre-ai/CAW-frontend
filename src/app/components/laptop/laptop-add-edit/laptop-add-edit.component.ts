@@ -123,7 +123,7 @@ export class LaptopAddEditComponent implements OnInit {
     this.editLaptopObject.type == 'Windows'
       ? (this.editLaptopObject.price = 50)
       : (this.editLaptopObject.price = 30);
-    this.editLaptopObject.status = 'available';
+    this.editLaptopObject.status = this.currentLaptop.status;
     this.editLaptopObject.isPaid = this.form.get('isPaid')?.value;
     this.editLaptopObject.isFree = this.form.get('isFree')?.value;
 
