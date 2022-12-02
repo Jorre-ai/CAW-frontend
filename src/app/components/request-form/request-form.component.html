@@ -25,6 +25,7 @@
             <div class="form-group m-3">
                 <label for="caw_id">Deelwerking CAW</label>
                 <select name="caw_id" id="caw_id" formControlName="caw_id"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.caw_id.errors}">
+                    <option value="">----</option>
                     <option *ngFor="let caw of allCaws" value="{{caw.id}}">{{caw.name}}</option>
                 </select>
                 <div *ngIf="submitted && f.caw_id.errors" class="invalid-feedback">
@@ -35,6 +36,7 @@
             <div class="form-group m-3">
                 <label for="count">Aantal Laptops</label>
                 <select name="count" id="count" formControlName="count" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.count.errors}">
+                    <option value="">----</option>
                     <option *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]" value="{{num}}">{{num}}</option>
                 </select>
                 <div *ngIf="submitted && f.count.errors" class="invalid-feedback">
